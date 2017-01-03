@@ -1,6 +1,6 @@
 THISDIR := potentialMethods
 THISBOOK := $(THISDIR)
-BASEVER := daa1713
+BASEVER := 8aa2fcd
 
 include ../latex/make.vars
 

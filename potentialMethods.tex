@@ -17,22 +17,151 @@
 \usepackage{peeters_figures}
 \usepackage{siunitx}
 %\usepackage{mhchem} % \ce{}
-%\usepackage{macros_bm} % \bcM
+\usepackage{macros_bm} % \BM
 %\usepackage{macros_qed} % \qedmarker
 %\usepackage{txfonts} % \ointclockwise
 
 \beginArtNoToc
 
-\generatetitle{XXX}
-%\chapter{XXX}
+\generatetitle{A comparision of potential methods}
+%\chapter{A comparision of potential methods}
 %\label{chap:potentialMethods.tex}
-% \citep{sakurai2014modern} pr X.Y
-% \citep{pozar2009microwave}
-% \citep{qftLectureNotes}
-% \citep{doran2003gap}
-% \citep{jackson1975cew}
-% \citep{griffiths1999introduction}
+
+\section{Motivation}
+
+Here is a comparison of potential methods in the time domain for solutions of Maxwell's equations.  Following \citep{balanis2005antenna} Maxwell's equations are extended with magnetic sources and currents, as follows
+
+\input{../ece1229-antenna/MaxwellsStatement.tex}
+
+It will be assumed that the media is isotropic with \( \BB = \mu \BH \), and \( \BD = \epsilon \BE \).  The impedance of the media will be written as \( \eta = \sqrt{\mu/\epsilon} \), and the group velocity of a wave solution will be written as \( v = 1/\sqrt{\epsilon\mu} \).
+
+\section{Traditional vector algebra}
+
+Potential solutions to \cref{eqn:chapter3Notes:19} follow nicely by considering the electric and magnetic source cases separately, and then building a final solution with superposition.
+
+\subsection{No magnetic sources}
+
+When magnetic sources are omitted, it follows from \cref{eqn:chapter3Notes:80} that there is some \( \BA \) for which
+
+%\begin{dmath}\label{eqn:potentialMethods:20}
+\boxedEquation{eqn:potentialMethods:20}{
+\BB = \spacegrad \cross \BA,
+}
+%\end{dmath}
+
+Substitution into Faraday's law \cref{eqn:chapter3Notes:20} gives
+
+\begin{dmath}\label{eqn:potentialMethods:40}
+\spacegrad \cross \BE = - \PD{t}{}\lr{ \spacegrad \cross \BA },
+\end{dmath}
+
+or
+\begin{dmath}\label{eqn:potentialMethods:60}
+\spacegrad \cross \lr{ \BE + \PD{t}{ \BA } } = 0.
+\end{dmath}
+
+A gradient representation of this curled quantity, say \( -\spacegrad \phi \), will provide the required zero
+
+%\begin{dmath}\label{eqn:potentialMethods:80}
+\boxedEquation{eqn:potentialMethods:80}{
+\BE = -\spacegrad \phi -\PD{t}{ \BA }.
+}
+%\end{dmath}
+
+The final two Maxwell equations yield
+
+\begin{dmath}\label{eqn:potentialMethods:100}
+\begin{aligned}
+-\spacegrad^2 \BA + \spacegrad \lr{ \spacegrad \cdot \BA } &= \mu \lr{ \BJ + \epsilon \PD{t}{} \lr{ -\spacegrad \phi -\PD{t}{ \BA } } } \\
+\spacegrad \cdot \lr{ -\spacegrad \phi -\PD{t}{ \BA } } &= \rho/\epsilon,
+\end{aligned}
+\end{dmath}
+
+or
+%\begin{dmath}\label{eqn:potentialMethods:120}
+\boxedEquation{eqn:potentialMethods:120}{
+\begin{aligned}
+\spacegrad^2 \BA - \inv{v^2} \PDSq{t}{ \BA }
+- \spacegrad \lr{
+\inv{v^2} \PD{t}{\phi}
++\spacegrad \cdot \BA
+}
+&= -\mu \BJ \\
+\spacegrad^2 \phi + \PD{t}{} \lr{ \spacegrad \cdot \BA } &= -\rho/\epsilon.
+\end{aligned}
+}
+%\end{dmath}
+
+Note that the Lorentz condition \( \PDi{t}{(\phi/v^2)} + \spacegrad \cdot \BA = 0 \) can be imposed to decouple these, leaving non-homogeneous wave equations for the vector and scalar potentials respectively.
+
+\subsection{No electric sources}
+
+Without electric sources, a curl representation of the electric field can be assumed, satisfing Gauss's law
+
+\boxedEquation{eqn:potentialMethods:140}{
+\BD = - \spacegrad \cross \BF.
+}
+
+Substitution into the Maxwell-Faraday law gives
+\begin{dmath}\label{eqn:potentialMethods:160}
+\spacegrad \cross \lr{ \BH + \PD{t}{\BF} } = 0.
+\end{dmath}
+
+This is satisfied with any gradient, say, \( -\spacegrad \phi_m \), providing a potential representation for the magnetic field
+
+%\begin{dmath}\label{eqn:potentialMethods:180}
+\boxedEquation{eqn:potentialMethods:180}{
+\BH = -\spacegrad \phi_m - \PD{t}{\BF}.
+}
+%\end{dmath}
+
+The remaining Maxwell equations provide the required constraints on the potentials
+
+\begin{subequations}
+\label{eqn:potentialMethods:200}
+\begin{dmath}\label{eqn:potentialMethods:220}
+-\spacegrad^2 \BF + \spacegrad \lr{ \spacegrad \cdot \BF } = -\epsilon
+\lr{
+   -\BM - \mu \PD{t}{}
+   \lr{
+      -\spacegrad \phi_m - \PD{t}{\BF}
+   }
+}
+\end{dmath}
+\begin{dmath}\label{eqn:potentialMethods:240}
+\spacegrad \cdot
+\lr{
+-\spacegrad \phi_m - \PD{t}{\BF}
+}
+= \inv{\mu} q_m,
+\end{dmath}
+\end{subequations}
+
+or
+%\begin{dmath}\label{eqn:potentialMethods:260}
+\boxedEquation{eqn:potentialMethods:260}{
+\begin{aligned}
+\spacegrad^2 \BF - \inv{v^2} \PDSq{t}{\BF} - \spacegrad \lr{ \inv{v^2} \PD{t}{\phi_m} + \spacegrad \cdot \BF } &= -\epsilon \BM \\
+\spacegrad^2 \phi_m + \PD{t}{}\lr{ \spacegrad \cdot \BF } &= -\inv{\mu} q_m.
+\end{aligned}
+}
+%\end{dmath}
+
+The general solution to Maxwell's equations is therefore
+\begin{dmath}\label{eqn:potentialMethods:280}
+\begin{aligned}
+\BE &=
+-\spacegrad \phi -\PD{t}{ \BA }
+- \inv{\epsilon} \spacegrad \cross \BF \\
+\BH &=
+\inv{\mu} \spacegrad \cross \BA
+-\spacegrad \phi_m - \PD{t}{\BF},
+\end{aligned}
+\end{dmath}
+
+subject to the constraints \cref{eqn:potentialMethods:120} and \cref{eqn:potentialMethods:260}.
+
+\section{GA with four-vectors}
 
 %}
 \EndArticle
-%\EndNoBibArticle

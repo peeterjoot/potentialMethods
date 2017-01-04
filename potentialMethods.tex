@@ -21,6 +21,9 @@
 %\usepackage{macros_qed} % \qedmarker
 %\usepackage{txfonts} % \ointclockwise
 
+\newcommand{\lpartialt}[0]{{\stackrel{ \leftarrow }{\partial_t}}}
+\newcommand{\rpartialt}[0]{{\stackrel{ \rightarrow }{\partial_t}}}
+
 \beginArtNoToc
 
 \generatetitle{A comparision of potential methods}
@@ -161,22 +164,116 @@ The general solution to Maxwell's equations is therefore
 
 subject to the constraints \cref{eqn:potentialMethods:120} and \cref{eqn:potentialMethods:260}.
 
+\subsection{Potential operator structure}
+
+Knowing that there is a simple underlying structure to the potential representation of the electromagnetic field in the covarient formalism inspires the question of whether that structure can be found directly using the scalar and vector potentials determined above.
+
+Specifically, forming
+
+\begin{dmath}\label{eqn:potentialMethods:1020}
+\bcF = \bcE + \eta I \bcH,
+\end{dmath}
+
+will result in the multivector potential equation
+
+\begin{dmath}\label{eqn:potentialMethods:280b}
+\bcF
+=
+-\spacegrad \phi -\PD{t}{ \bcA }
+- \inv{\epsilon} \spacegrad \cross \bcK \\
++ I \eta
+\lr{
+\inv{\mu} \spacegrad \cross \bcA
+-\spacegrad \phi_m - \PD{t}{\bcK}
+}.
+\end{dmath}
+
+Can this be factored into into multivector operator and multivector potentials?  Expanding the cross products provides some direction
+
+\begin{dmath}\label{eqn:potentialMethods:1040}
+\begin{aligned}
+\bcF
+&=
+- \PD{t}{ \bcA }
+- \eta \PD{t}{I \bcK}
+- \spacegrad \lr{ \phi - \eta I \phi_m } \\
+&\quad + \frac{\eta}{2 \mu} \lr{ \rspacegrad \bcA - \bcA \lspacegrad }
++ \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcK - I \bcK \lspacegrad },
+\end{aligned}
+\end{dmath}
+
+from which it can be observed that the gradient and the time partials can be grouped nicely
+
+\begin{dmath}\label{eqn:potentialMethods:1060}
+\begin{aligned}
+\bcF
+&=
+- \PD{t}{ } \lr{\bcA + \eta I \bcK}
+- \spacegrad \lr{ \phi - \eta I \phi_m }
++ \frac{v}{2} \lr{ \rspacegrad (\bcA + I \eta \bcK) - (\bcA + I \eta \bcK) \lspacegrad } \\
+%=
+%- \inv{v} \PD{t}{ (v \bcA) } + \frac{1}{2} \lr{ \rspacegrad (v \bcA) - (v \bcA) \lspacegrad }
+%- \inv{v} \PD{t}{} (\eta v I \bcK)
+%+ \frac{1}{2 } \lr{ \rspacegrad (\eta v I \bcK) - (\eta v I \bcK) \lspacegrad }
+%- \spacegrad \lr{ \phi - \eta I \phi_m }
+&=
+\inv{2} \lr{
+   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ v \bcA + \eta v I \bcK }
+   -
+   \lr{ v \bcA + \eta v I \bcK} \lr{ \lspacegrad + \inv{v} \lpartialt }
+} \\
+&\quad - \inv{2} \lr{
+   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ \phi - \eta I \phi_m }
+   + \lr{ \phi - \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
+} \\
+&=
+- \inv{2} \Biglr{
+   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ - v \bcA - \eta v I \bcK +  \phi - \eta I \phi_m } \\
+   &\qquad -
+   \lr{ - v \bcA - \eta v I \bcK - \phi + \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
+},
+\end{aligned}
+\end{dmath}
+
+or
+
+\begin{dmath}\label{eqn:potentialMethods:1080}
+\begin{aligned}
+\bcF
+&=
+\inv{2} \Biglr{
+   \lr{ \rspacegrad - \inv{v} \rpartialt }
+   \lr{
+      - \phi + v \bcA
+      + \eta I \lr{ \phi_m + v \bcK }
+   } \\
+   &\qquad -
+   \lr{
+      \phi + v \bcA
+      - \eta I \lr{ \phi_m - v \bcK }
+   }
+   \lr{ \lspacegrad + \inv{v} \lpartialt }
+}
+.
+\end{aligned}
+\end{dmath}
+
+There's an odd sort of conguation structure in this multivector potential representation for which the underlying rationale is not immediately obvious.
+
 \section{Covarient formulation (GA)}
 
 The GA formulation of Maxwell's equation is
 
 \begin{dmath}\label{eqn:potentialMethods:300}
-\begin{aligned}
-\bcF &= \bcE + \eta I \bcH \\
 \lr{ \spacegrad + \inv{v} \PD{t}{} } \bcF
-&=
+=
 %\inv{\epsilon v}
 \eta
 \lr{ v q_\txte - \bcJ }
-+ I \lr{ v q_\txtm - \bcM }.
-\end{aligned}
++ I \lr{ v q_\txtm - \bcM },
 \end{dmath}
 
+where \( \bcF \) is defined by \cref{eqn:potentialMethods:1020}.
 This can be converted to covariant form, introducing a four-vector basis \( \setlr{ \gamma_\mu } \), where the spatial basis
 \( \setlr{ \Be_k = \gamma_k \gamma_0 } \)
 is reexpressed in terms of the Dirac basis \( \setlr{ \gamma_\mu } \).
@@ -345,29 +442,64 @@ Comparing with \cref{eqn:potentialMethods:260} shows that \( Q_0/v = \mu \phi_m 
 Q = \gamma_0 \eta \lr{ \phi_m - v \bcK }.
 }
 
-\section{Non-covarient formulation (GA)}
+\subsection{Potential operator structure}
 
-When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to introduce a potential representation without first resorting to unpacking that equation into its convential form, or resorting to knowing the answer from the relativisitic point of view.
+Observe that there is an underlying uniform structure of the differential operator that acts on the potential to produce the electromagnetic field.  This can be thought of as a function of
+the gradient, and the potential
+\( \bcF = L(\lrgrad, P, Q) \)
 
-Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  Having computed the covarient potential relations, a reasonable guess at the structure of that multivector potential is
-
-\begin{dmath}\label{eqn:potentialMethods:920}
-A = \phi - v \bcA + \eta \lr{ \phi_m - \bcK }.
+\begin{dmath}\label{eqn:potentialMethods:980}
+\bcF
+=
+L(\grad, P, Q)
+= \grad \wedge P + I (\grad \wedge Q)
+= \inv{2} \lr{ \rgrad P - P \lgrad }
+- \inv{2} \lr{ \rgrad I Q + I Q \lgrad }
+=
+\inv{2} \lr{ \rgrad (P -IQ) - (P + IQ) \lgrad },
 \end{dmath}
 
-However, such a guess is not satisfactory, as it is only a natural guess if the covariant GA formalism is known (or the equivalent relativistic tensor relations).  Suppose that it is possible to derive the electromagnetic field from a potential given by
+or
+\begin{dmath}\label{eqn:potentialMethods:1000}
+\bcF
+=
+\inv{2} \lr{ \rgrad (P -IQ) - (P - IQ)^\dagger \lgrad }
+%=
+%\inv{2} \lr{ \grad (P -IQ) - (\grad (P - I Q))^\dagger }
+.
+\end{dmath}
+
+\section{Non-covarient formulation (GA)}
+
+When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to directly introduce a potential representation without first resorting to unpacking that equation into its vector convential form, or obtaining that potential directly from the covariant representation.
+
+Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  This was seen explicitly when the covarient potential relation of \cref{eqn:potentialMethods:1000} was computed, where that four-potential multivector was found to be
+
+\begin{dmath}\label{eqn:potentialMethods:920}
+A = \phi - v \bcA - I \eta \lr{ \phi_m - v \bcK }.
+\end{dmath}
+
+The fact that a multivector potential (including all grades) is desired could also be guessed from the results of the conventional vector algebra potential found in \cref{eqn:potentialMethods:280}.  Such a guess is not entirely satifactory, since it does not easily yeild the structure of the differential operator on this potential.  In general, the expectation is that the potential will be of the form
+%however, such a guess is not entirely satisfactory.  It is perhaps only a natural guess if the covariant GA formalism
+%is known, and it does not provide the structure of the differential operator on this potential.  Suppose that it is possible to derive the electromagnetic field from a potential given by
 
 \begin{dmath}\label{eqn:potentialMethods:960}
 A = \sum_{k=0}^3 A_k,
 \end{dmath}
 
-where \( A_k \) is of grade \( k \).  Assuming such a potential the electromagnetic field can generally assumed to have a representation potentially as general as
+where \( A_k \) is of grade \( k \).  However, obtaining the electromagnetic field from this potential could have a structure potentially as general as
 
 \begin{dmath}\label{eqn:potentialMethods:940}
-\bcF = a \inv{v} \PD{t}{A} + b \spacegrad A_0 + \sum_{k=1}^2 \lr{ c_k \rspacegrad A_k + d_k A_k \lspacegrad } + e_k \spacegrad A_3
+\bcF =
+\inv{v} \PD{t}{}
+\sum_{k=0}^3 a_k
+A_k
++ \spacegrad (b A_0 + c A_3) + \sum_{k=1}^2 \lr{ d_k \rspacegrad A_k + e_k A_k \lspacegrad }.
 \end{dmath}
 
-
+Note that there are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
+The constants \( a_k, b, c, d_k, e_k \) could be determined by comparing this presumed representation with
+\cref{eqn:potentialMethods:1040}.
 
 %}
 \EndArticle

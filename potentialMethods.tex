@@ -349,5 +349,25 @@ Q = \gamma_0 \eta \lr{ \phi_m - v \bcK }.
 
 When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to introduce a potential representation without first resorting to unpacking that equation into its convential form, or resorting to knowing the answer from the relativisitic point of view.
 
+Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  Having computed the covarient potential relations, a reasonable guess at the structure of that multivector potential is
+
+\begin{dmath}\label{eqn:potentialMethods:920}
+A = \phi - v \bcA + \eta \lr{ \phi_m - \bcK }.
+\end{dmath}
+
+However, such a guess is not satisfactory, as it is only a natural guess if the covariant GA formalism is known (or the equivalent relativistic tensor relations).  Suppose that it is possible to derive the electromagnetic field from a potential given by
+
+\begin{dmath}\label{eqn:potentialMethods:960}
+A = \sum_{k=0}^3 A_k,
+\end{dmath}
+
+where \( A_k \) is of grade \( k \).  Assuming such a potential the electromagnetic field can generally assumed to have a representation potentially as general as
+
+\begin{dmath}\label{eqn:potentialMethods:940}
+\bcF = a \inv{v} \PD{t}{A} + b \spacegrad A_0 + \sum_{k=1}^2 \lr{ c_k \rspacegrad A_k + d_k A_k \lspacegrad } + e_k \spacegrad A_3
+\end{dmath}
+
+
+
 %}
 \EndArticle

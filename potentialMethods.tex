@@ -259,6 +259,30 @@ or
 \end{dmath}
 
 There's an odd sort of conguation structure in this multivector potential representation for which the underlying rationale is not immediately obvious.
+%%%XX
+%%%
+%%%\begin{subequations}
+%%%\label{eqn:potentialMethods:1180}
+%%%\begin{dmath}\label{eqn:potentialMethods:1200}
+%%%-\gamma_0 ( P - I Q )
+%%%=
+%%%-\gamma_0 \gamma_0 \lr{ \phi -v \bcA - \eta I \lr{ \phi_m - v \bcK } }
+%%%=
+%%%-\phi +v \bcA + \eta I \phi_m - \eta v I \bcK
+%%%\end{dmath}
+%%%\begin{dmath}\label{eqn:potentialMethods:1220}
+%%%( P + I Q )\gamma_0
+%%%=
+%%%\gamma_0 \lr{ \phi -v \bcA + \eta I \lr{ \phi_m - v \bcK } } \gamma_0
+%%%=
+%%%\phi -v \bcA + \eta \gamma_0 I \gamma_0 \lr{ \phi_m + v \bcK }
+%%%=
+%%%\phi -v \bcA - \eta I \lr{ \phi_m + v \bcK }
+%%%=
+%%%\phi -v \bcA - \eta I \phi_m - \eta v I \bcK,
+%%%\end{dmath}
+%%%\end{subequations}
+%%%
 
 \section{Covarient formulation (GA)}
 
@@ -469,7 +493,63 @@ or
 .
 \end{dmath}
 
-TODO: compare this with the result obtained by assembling the potentials into a multivector in the non-covariant approach above.
+This can be put into correspondance with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
+
+\begin{dmath}\label{eqn:potentialMethods:1100}
+\bcF
+=
+\inv{2} \lr{ (\rgrad \gamma_0) (\gamma_0 (P -IQ)) - ((P + IQ) \gamma_0)(\gamma_0 \lgrad) },
+\end{dmath}
+
+where
+
+\begin{subequations}
+\label{eqn:potentialMethods:1120}
+\begin{dmath}\label{eqn:potentialMethods:1140}
+\grad \gamma_0
+=
+(\gamma^0 \partial_0 + \gamma^k \partial_k) \gamma_0
+=
+\partial_0 + \gamma^k \gamma_0 \partial_k
+=
+\inv{v} \partial_t - \spacegrad,
+\end{dmath}
+\begin{dmath}\label{eqn:potentialMethods:1160}
+\gamma_0 \grad
+=
+\gamma_0 (\gamma^0 \partial_0 + \gamma^k \partial_k)
+=
+\partial_0 - \gamma^k \gamma_0 \partial_k
+=
+\inv{v} \partial_t + \spacegrad,
+\end{dmath}
+\end{subequations}
+
+and
+\begin{subequations}
+\label{eqn:potentialMethods:1180}
+\begin{dmath}\label{eqn:potentialMethods:1200}
+\gamma_0 ( P - I Q )
+=
+\gamma_0 \gamma_0 \lr{ \phi -v \bcA - \eta I \lr{ \phi_m - v \bcK } }
+=
+\phi -v \bcA - \eta I \phi_m + \eta v I \bcK
+\end{dmath}
+\begin{dmath}\label{eqn:potentialMethods:1220}
+( P + I Q )\gamma_0
+=
+\gamma_0 \lr{ \phi -v \bcA + \eta I \lr{ \phi_m - v \bcK } } \gamma_0
+=
+\phi -v \bcA + \eta \gamma_0 I \gamma_0 \lr{ \phi_m + v \bcK }
+=
+\phi -v \bcA - \eta I \lr{ \phi_m + v \bcK }
+=
+\phi -v \bcA - \eta I \phi_m - \eta v I \bcK,
+\end{dmath}
+\end{subequations}
+
+FIXME: this doesn't compare against \cref{eqn:potentialMethods:1080} !?
+%TODO: compare this with the result obtained by assembling the potentials into a multivector in the non-covariant approach above.
 
 \section{Non-covarient formulation (GA)}
 

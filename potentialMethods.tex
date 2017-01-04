@@ -161,7 +161,7 @@ The general solution to Maxwell's equations is therefore
 
 subject to the constraints \cref{eqn:potentialMethods:120} and \cref{eqn:potentialMethods:260}.
 
-\section{Covarient formulation}
+\section{Covarient formulation (GA)}
 
 The GA formulation of Maxwell's equation is
 
@@ -252,18 +252,10 @@ or
 \end{dmath}
 \end{subequations}
 
-So
+So \( P_0 = \phi \) and \( -\ifrac{\bcP}{v} = \bcA \), or
 
-\begin{dmath}\label{eqn:potentialMethods:580}
-\begin{aligned}
-P_0 &= \phi \\
--\frac{\BP}{v} &= \BA,
-\end{aligned}
-\end{dmath}
-
-or
 \boxedEquation{eqn:potentialMethods:600}{
-P = \gamma_0\lr{ \phi - v \BA }.
+P = \gamma_0\lr{ \phi - v \bcA }.
 }
 
 \subsection{No electric sources}
@@ -347,15 +339,15 @@ or
 \end{dmath}
 \end{subequations}
 
-Comparing with \cref{eqn:potentialMethods:260} shows that
+Comparing with \cref{eqn:potentialMethods:260} shows that \( Q_0/v = \mu \phi_m \) and \( -\ifrac{\bcQ}{v^2} = \mu \bcK \), or
 
-\boxedEquation{eqn:potentialMethods:260}{
-\begin{aligned}
-\spacegrad^2 \bcK - \inv{v^2} \PDSq{t}{\bcK} - \spacegrad \lr{ \inv{v^2} \PD{t}{\phi_m} + \spacegrad \cdot \bcK } &= -\epsilon \bcM \\
-\spacegrad^2 \phi_m + \PD{t}{}\lr{ \spacegrad \cdot \bcK } &= -\inv{\mu} q_m.
-\end{aligned}
+\boxedEquation{eqn:potentialMethods:900}{
+Q = \gamma_0 \eta \lr{ \phi_m - v \bcK }.
 }
-%\end{dmath}
+
+\section{Non-covarient formulation (GA)}
+
+When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to introduce a potential representation without first resorting to unpacking that equation into its convential form, or resorting to knowing the answer from the relativisitic point of view.
 
 %}
 \EndArticle

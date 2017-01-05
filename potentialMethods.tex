@@ -240,7 +240,8 @@ gradient and the time partials can be grouped together
 
 or
 
-\begin{dmath}\label{eqn:potentialMethods:1080}
+%\begin{dmath}\label{eqn:potentialMethods:1080}
+\boxedEquation{eqn:potentialMethods:1080}{
 \begin{aligned}
 \bcF
 &=
@@ -263,7 +264,8 @@ or
 }
 .
 \end{aligned}
-\end{dmath}
+}
+%\end{dmath}
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the covariant formalism.
 
@@ -451,8 +453,9 @@ Q = \gamma_0 \eta \lr{ \phi_m - v \bcK }.
 
 \subsection{Potential operator structure}
 
-Observe that there is an underlying uniform structure of the differential operator that acts on the potential to produce the electromagnetic field.  This can be thought of as a function of
-the gradient, and the potential
+Observe that there is an underlying uniform structure of the differential operator that acts on the potential to produce the electromagnetic field.  Expressed as a linear operator of the 
+gradient and the potentials, that is
+
 \( \bcF = L(\lrgrad, P, Q) \)
 
 \begin{dmath}\label{eqn:potentialMethods:980}
@@ -472,14 +475,16 @@ L(\grad, P, Q)
 \end{dmath}
 
 or
-\begin{dmath}\label{eqn:potentialMethods:1000}
+%\begin{dmath}\label{eqn:potentialMethods:1000}
+\boxedEquation{eqn:potentialMethods:1000}{
 \bcF
 =
 \inv{2} \lr{ \rgrad (P -IQ) - (P - IQ)^\dagger \lgrad }
 %=
 %\inv{2} \lr{ \grad (P -IQ) - (\grad (P - I Q))^\dagger }
 .
-\end{dmath}
+}
+%\end{dmath}
 
 This can be put into correspondance with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
 

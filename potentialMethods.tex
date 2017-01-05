@@ -576,40 +576,42 @@ Finally, note that, like \cref{eqn:potentialMethods:1260}, the electromagnetic f
 
 \section{Non-covarient formulation (GA)}
 
-When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to directly introduce a potential representation without first resorting to unpacking that equation into its vector convential form, or obtaining that potential directly from the covariant representation.  Determining the potential representation of the field in both the conventional and covariant formalisms started from observations that a wedge product was zero when one of the electric or magnetic sources was zero.  There must be some generalization of the curl operation that applies to the multivector spacetime derivative operator of \cref{eqn:potentialMethods:300}.
+%%When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:300}, it is not obvious how to directly introduce a potential representation without first resorting to unpacking that equation into its vector convential form, or obtaining that potential directly from the covariant representation.  Determining the potential representation of the field in both the conventional and covariant formalisms started from observations that a wedge product was zero when one of the electric or magnetic sources was zero.  There must be some generalization of the curl operation that applies to the multivector spacetime derivative operator of \cref{eqn:potentialMethods:300}.
+%%
+%%Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  This was seen explicitly when the covarient potential relation of \cref{eqn:potentialMethods:1000} was computed, where that four-potential multivector was found to be
+%%
+%%\begin{dmath}\label{eqn:potentialMethods:920}
+%%A = -\phi + v \bcA
+%%+ \eta I v \bcK
+%%- I \eta \phi_m
+%%.
+%%\end{dmath}
+%%
+%%The fact that a multivector potential (including all grades) is desired could also be guessed from the results of the conventional vector algebra potential found in \cref{eqn:potentialMethods:280}.  Such a guess is not entirely satifactory, since it does not easily yeild the structure of the differential operator on this potential.  In general, the expectation is that the potential will be of the form
+%%%however, such a guess is not entirely satisfactory.  It is perhaps only a natural guess if the covariant GA formalism
+%%%is known, and it does not provide the structure of the differential operator on this potential.  Suppose that it is possible to derive the electromagnetic field from a potential given by
+%%
+%%\begin{dmath}\label{eqn:potentialMethods:960}
+%%A = \sum_{k=0}^3 A_k,
+%%\end{dmath}
+%%
+%%where \( A_k \) is of grade \( k \).  However, obtaining the electromagnetic field from this potential could have a structure potentially as general as
+%%
+%%\begin{dmath}\label{eqn:potentialMethods:940}
+%%\bcF =
+%%\inv{v} \PD{t}{}
+%%\sum_{k=0}^3 a_k
+%%A_k
+%%+ \spacegrad (b A_0 + c A_3) + \sum_{k=1}^2 \lr{ d_k \rspacegrad A_k + e_k A_k \lspacegrad }.
+%%\end{dmath}
+%%
+%%There are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
+%%The constants \( a_k, b, c, d_k, e_k \) could be determined by comparing this presumed representation with
+%%\cref{eqn:potentialMethods:1040}.
+%%
+%%TODO: figure out how \cref{eqn:potentialMethods:1080} can be obtained directly from Maxwell's equation without resorting to unpacking that into its components or resorting to the equivalent covariant formalism.  Contrast this to the (gauge specific) single sided potential representation that Mauro found.
+%%
 
-Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  This was seen explicitly when the covarient potential relation of \cref{eqn:potentialMethods:1000} was computed, where that four-potential multivector was found to be
-
-\begin{dmath}\label{eqn:potentialMethods:920}
-A = -\phi + v \bcA 
-+ \eta I v \bcK
-- I \eta \phi_m 
-.
-\end{dmath}
-
-The fact that a multivector potential (including all grades) is desired could also be guessed from the results of the conventional vector algebra potential found in \cref{eqn:potentialMethods:280}.  Such a guess is not entirely satifactory, since it does not easily yeild the structure of the differential operator on this potential.  In general, the expectation is that the potential will be of the form
-%however, such a guess is not entirely satisfactory.  It is perhaps only a natural guess if the covariant GA formalism
-%is known, and it does not provide the structure of the differential operator on this potential.  Suppose that it is possible to derive the electromagnetic field from a potential given by
-
-\begin{dmath}\label{eqn:potentialMethods:960}
-A = \sum_{k=0}^3 A_k,
-\end{dmath}
-
-where \( A_k \) is of grade \( k \).  However, obtaining the electromagnetic field from this potential could have a structure potentially as general as
-
-\begin{dmath}\label{eqn:potentialMethods:940}
-\bcF =
-\inv{v} \PD{t}{}
-\sum_{k=0}^3 a_k
-A_k
-+ \spacegrad (b A_0 + c A_3) + \sum_{k=1}^2 \lr{ d_k \rspacegrad A_k + e_k A_k \lspacegrad }.
-\end{dmath}
-
-There are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
-The constants \( a_k, b, c, d_k, e_k \) could be determined by comparing this presumed representation with
-\cref{eqn:potentialMethods:1040}.
-
-TODO: figure out how \cref{eqn:potentialMethods:1080} can be obtained directly from Maxwell's equation without resorting to unpacking that into its components or resorting to the equivalent covariant formalism.  Contrast this to the (gauge specific) single sided potential representation that Mauro found.
 
 %}
 \EndArticle

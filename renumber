@@ -1,2 +1,4 @@
 ../latex/bin/lgrep potentialMethods.tex | tee o ; . ./o
 perl -p -i ../latex/bin/latexRegex.pl potentialMethods.tex
+../latex/bin/lgrep rotation.tex | tee o ; . ./o
+perl -p -i ../latex/bin/latexRegex.pl rotation.tex

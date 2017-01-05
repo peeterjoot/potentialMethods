@@ -1,0 +1,106 @@
+%
+% Copyright © 2017 Peeter Joot.  All Rights Reserved.
+% Licenced as described in the file LICENSE under the root directory of this GIT repository.
+%
+%{
+\input{../latex/blogpost.tex}
+\renewcommand{\basename}{rotation.tex}
+%\renewcommand{\dirname}{notes/phy1520/}
+\renewcommand{\dirname}{notes/ece1228-electromagnetic-theory/}
+%\newcommand{\dateintitle}{}
+%\newcommand{\keywords}{}
+
+\input{../latex/peeter_prologue_print2.tex}
+
+\usepackage{peeters_layout_exercise}
+\usepackage{peeters_braket}
+\usepackage{peeters_figures}
+\usepackage{siunitx}
+%\usepackage{mhchem} % \ce{}
+%\usepackage{macros_bm} % \bcM
+%\usepackage{macros_qed} % \qedmarker
+%\usepackage{txfonts} % \ointclockwise
+
+\beginArtNoToc
+
+\generatetitle{Change of basis}
+%\chapter{Change of basis}
+%\label{chap:rotation.tex}
+
+Given two orthonormal bases
+\( \beta_1 = \setlr{ \Be_1, \Be_2, \Be_3 } \), and
+\( \beta_2 = \setlr{ \Bf_1, \Bf_2, \Bf_3 } \)
+
+three multivector rotation operators are required to make a change of basis transformation, say
+
+\begin{equation}\label{eqn:rotation:20}
+\Bf_k = \Be_k e^{B_k} = e^{-B_k} \Be_k.
+\end{equation}
+
+Here \( B_k \) is a bivector for which the orientation is the plane of rotation between \( \Be_k \) and \( \Bf_k \)
+
+\begin{dmath}\label{eqn:rotation:40}
+\hat{B}_k = \frac{B_k}{\Abs{B_k}} = \frac{\Be_k \wedge \Bf_k}{\Abs{\Be_k \wedge \Bf_k}},
+\end{dmath}
+
+and has the magnitude \( \Abs{B_k} = \theta_k \), the rotation angle between \( \Be_k \) and \( \Bf_k \).
+
+If the coordinate representation in the two bases is given by
+
+\begin{equation}\label{eqn:rotation:60}
+\Bx = \sum_k x_k \Be_k = \sum_k y_k \Bf_k,
+\end{equation}
+
+then the coordinates can be related by the same transformation.  That is
+
+\begin{dmath}\label{eqn:rotation:80}
+y_i
+= \Bx \cdot \Bf_i
+= \gpgradezero{
+\lr{ \sum_k x_k \Be_k } \Bf_i
+}
+=
+\sum_k x_k
+\gpgradezero
+{
+\Be_k \Be_i e^{B_k}
+}
+=
+\sum_k x_k \lr{ (\Be_k \cdot \Be_i) \cosh(B_k) + (\Be_k \wedge \Be_i) \cdot \sinh(B_k)
+=
+\sum_k x_k \lr{ (\Be_k \cdot \Be_i) \cos(\theta_k) + ((\Be_k \wedge \Be_i) \cdot \hat{B}_k) \sin(\theta_k),
+\end{dmath}
+
+However, observe that the bivector dot product factor of the sine is zero
+
+\begin{dmath}\label{eqn:rotation:100}
+(\Be_k \wedge \Be_i) \cdot \hat{B}_k
+=
+(\Be_k \wedge \Be_i) \cdot \frac{\Be_k \wedge \Bf_k}{\Abs{\Be_k \wedge \Bf_k}}
+=
+\frac{(\Be_k \cdot \Bf_k - \Be_i \cdot \Bf_k) \delta_{ik}}{
+\sqrt{ 1 - (\Be_k \cdot \Bf_k)^2 }
+= 0,
+\end{dmath}
+
+so the change of basis can be expressed as a diagonal rotation matrix with coordinates \( R_{ij} \) given by
+
+\begin{dmath}\label{eqn:rotation:120}
+R_{ij}
+=
+(\Be_i \cdot \Be_j) \cos(\theta_i)
+=
+\delta_{ij} \cos(\theta_i),
+%=
+%\cos(\theta_j)
+\end{dmath}
+
+and the coordinates are
+
+\begin{dmath}\label{eqn:rotation:140}
+y_i = R_{ij} x_j.
+\end{dmath}
+
+%}
+\EndArticle
+%\EndNoBibArticle

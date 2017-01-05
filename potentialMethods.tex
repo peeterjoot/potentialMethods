@@ -581,7 +581,10 @@ When Maxwell equation is in the non-covariant form \cref{eqn:potentialMethods:30
 Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  This was seen explicitly when the covarient potential relation of \cref{eqn:potentialMethods:1000} was computed, where that four-potential multivector was found to be
 
 \begin{dmath}\label{eqn:potentialMethods:920}
-A = \phi - v \bcA - I \eta \lr{ \phi_m - v \bcK }.
+A = -\phi + v \bcA 
++ \eta I v \bcK
+- I \eta \phi_m 
+.
 \end{dmath}
 
 The fact that a multivector potential (including all grades) is desired could also be guessed from the results of the conventional vector algebra potential found in \cref{eqn:potentialMethods:280}.  Such a guess is not entirely satifactory, since it does not easily yeild the structure of the differential operator on this potential.  In general, the expectation is that the potential will be of the form
@@ -602,7 +605,7 @@ A_k
 + \spacegrad (b A_0 + c A_3) + \sum_{k=1}^2 \lr{ d_k \rspacegrad A_k + e_k A_k \lspacegrad }.
 \end{dmath}
 
-Note that there are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
+There are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
 The constants \( a_k, b, c, d_k, e_k \) could be determined by comparing this presumed representation with
 \cref{eqn:potentialMethods:1040}.
 

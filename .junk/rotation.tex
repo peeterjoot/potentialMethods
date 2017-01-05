@@ -27,9 +27,10 @@
 %\chapter{Change of basis}
 %\label{chap:rotation.tex}
 
-Given two bases
+Given two orthonormal bases
 \( \beta_1 = \setlr{ \Be_1, \Be_2, \Be_3 } \), and
-\( \beta_2 = \setlr{ \Bf_1, \Bf_2, \Bf_3 } \),
+\( \beta_2 = \setlr{ \Bf_1, \Bf_2, \Bf_3 } \)
+
 three multivector rotation operators are required to make a change of basis transformation, say
 
 \begin{equation}\label{eqn:rotation:20}
@@ -56,54 +57,50 @@ then the coordinates can be related by the same transformation.  That is
 y_i
 = \Bx \cdot \Bf_i
 = \gpgradezero{
-\lr{ \sum_j x_j \Be_j } \Bf_i
+\lr{ \sum_k x_k \Be_k } \Bf_i
 }
 =
-\sum_j x_j
+\sum_k x_k
 \gpgradezero
 {
-\Be_j \Be_i e^{B_j}
+\Be_k \Be_i e^{B_k}
 }
 =
-\sum_j x_j \lr{ (\Be_j \cdot \Be_i) \cosh(B_j) + (\Be_j \wedge \Be_i) \cdot \sinh(B_j) }
+\sum_k x_k \lr{ (\Be_k \cdot \Be_i) \cosh(B_k) + (\Be_k \wedge \Be_i) \cdot \sinh(B_k)
 =
-\sum_j x_j \lr{ (\Be_j \cdot \Be_i) \cos(\theta_j) + ((\Be_j \wedge \Be_i) \cdot \hat{B}_j) \sin(\theta_j) },
+\sum_k x_k \lr{ (\Be_k \cdot \Be_i) \cos(\theta_k) + ((\Be_k \wedge \Be_i) \cdot \hat{B}_k) \sin(\theta_k),
 \end{dmath}
 
-If desired the explicit expansion of the
-bivector dot product factor of the sine is
+However, observe that the bivector dot product factor of the sine is zero
 
 \begin{dmath}\label{eqn:rotation:100}
-(\Be_j \wedge \Be_i) \cdot \hat{B}_j
+(\Be_k \wedge \Be_i) \cdot \hat{B}_k
 =
-(\Be_j \wedge \Be_i) \cdot \frac{\Be_j \wedge \Bf_j}{\sqrt{-(\Be_j \wedge \Bf_j) \cdot (\Be_j \wedge \Bf_j)}}
+(\Be_k \wedge \Be_i) \cdot \frac{\Be_k \wedge \Bf_k}{\Abs{\Be_k \wedge \Bf_k}}
 =
-\frac{
-   (\Be_j \cdot \Bf_j)(\Be_i \cdot \Be_j)
-   -
-   (\Be_j \cdot \Be_j)(\Be_i \cdot \Bf_j)
-}{
-\sqrt{
-(\Be_j \cdot \Be_j)(\Bf_j \cdot \Bf_j)
--(\Bf_j \cdot \Be_j)(\Be_j \cdot \Bf_j)
-}
-}.
+\frac{(\Be_k \cdot \Bf_k - \Be_i \cdot \Bf_k) \delta_{ik}}{
+\sqrt{ 1 - (\Be_k \cdot \Bf_k)^2 }
+= 0,
 \end{dmath}
 
-The change of basis can be expressed as a rotation matrix with coordinates \( R_{ij} \) given by
+so the change of basis can be expressed as a diagonal rotation matrix with coordinates \( R_{ij} \) given by
 
 \begin{dmath}\label{eqn:rotation:120}
 R_{ij}
 =
-(\Be_j \cdot \Be_i) \cos(\theta_j) + ((\Be_j \wedge \Be_i) \cdot \hat{B}_j) \sin(\theta_j),
+(\Be_i \cdot \Be_j) \cos(\theta_i)
+=
+\delta_{ij} \cos(\theta_i),
+%=
+%\cos(\theta_j)
 \end{dmath}
 
-where the coordinate transformation is
+and the coordinates are
 
 \begin{dmath}\label{eqn:rotation:140}
 y_i = R_{ij} x_j.
 \end{dmath}
 
 %}
-%\EndArticle
-\EndNoBibArticle
+\EndArticle
+%\EndNoBibArticle

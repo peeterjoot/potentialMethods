@@ -198,40 +198,43 @@ Can this be factored into into multivector operator and multivector potentials? 
 - \eta \PD{t}{I \bcK}
 - \spacegrad \lr{ \phi - \eta I \phi_m } \\
 &\quad + \frac{\eta}{2 \mu} \lr{ \rspacegrad \bcA - \bcA \lspacegrad }
-+ \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcK - I \bcK \lspacegrad },
++ \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcK - I \bcK \lspacegrad }.
 \end{aligned}
 \end{dmath}
 
-from which it can be observed that the gradient and the time partials can be grouped nicely
+Observe that the
+gradient and the time partials can be grouped together
 
 \begin{dmath}\label{eqn:potentialMethods:1060}
 \begin{aligned}
 \bcF
 &=
 - \PD{t}{ } \lr{\bcA + \eta I \bcK}
-- \spacegrad \lr{ \phi - \eta I \phi_m }
+- \spacegrad \lr{ \phi + \eta I \phi_m }
 + \frac{v}{2} \lr{ \rspacegrad (\bcA + I \eta \bcK) - (\bcA + I \eta \bcK) \lspacegrad } \\
 %=
 %- \inv{v} \PD{t}{ (v \bcA) } + \frac{1}{2} \lr{ \rspacegrad (v \bcA) - (v \bcA) \lspacegrad }
 %- \inv{v} \PD{t}{} (\eta v I \bcK)
 %+ \frac{1}{2 } \lr{ \rspacegrad (\eta v I \bcK) - (\eta v I \bcK) \lspacegrad }
-%- \spacegrad \lr{ \phi - \eta I \phi_m }
+%- \spacegrad \lr{ \phi + \eta I \phi_m }
 &=
 \inv{2} \lr{
    \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ v \bcA + \eta v I \bcK }
    -
    \lr{ v \bcA + \eta v I \bcK} \lr{ \lspacegrad + \inv{v} \lpartialt }
 } \\
-&\quad - \inv{2} \lr{
-   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ \phi - \eta I \phi_m }
-   + \lr{ \phi - \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
-} \\
-&=
-- \inv{2} \Biglr{
-   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ - v \bcA - \eta v I \bcK +  \phi - \eta I \phi_m } \\
-   &\qquad -
-   \lr{ - v \bcA - \eta v I \bcK - \phi + \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
-},
+&+\quad \inv{2} \lr{
+   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ -\phi - \eta I \phi_m }
+   - \lr{ \phi + \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
+}
+% \\
+%&=
+%- \inv{2} \Biglr{
+%   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ - v \bcA - \eta v I \bcK +  \phi + \eta I \phi_m } \\
+%   &\qquad -
+%   \lr{ - v \bcA - \eta v I \bcK - \phi - \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
+%}
+,
 \end{aligned}
 \end{dmath}
 
@@ -244,13 +247,17 @@ or
 \inv{2} \Biglr{
    \lr{ \rspacegrad - \inv{v} \rpartialt }
    \lr{
-      - \phi + v \bcA
-      + \eta I \lr{ \phi_m + v \bcK }
+      - \phi
+      + v \bcA
+      + \eta I v \bcK
+      - \eta I \phi_m
    } \\
    &\qquad -
    \lr{
-      \phi + v \bcA
-      - \eta I \lr{ \phi_m - v \bcK }
+      \phi
+      + v \bcA
+      + \eta I v \bcK
+      + \eta I \phi_m
    }
    \lr{ \lspacegrad + \inv{v} \lpartialt }
 }
@@ -258,31 +265,7 @@ or
 \end{aligned}
 \end{dmath}
 
-There's an odd sort of conguation structure in this multivector potential representation for which the underlying rationale is not immediately obvious.
-%%%XX
-%%%
-%%%\begin{subequations}
-%%%\label{eqn:potentialMethods:1180}
-%%%\begin{dmath}\label{eqn:potentialMethods:1200}
-%%%-\gamma_0 ( P - I Q )
-%%%=
-%%%-\gamma_0 \gamma_0 \lr{ \phi -v \bcA - \eta I \lr{ \phi_m - v \bcK } }
-%%%=
-%%%-\phi +v \bcA + \eta I \phi_m - \eta v I \bcK
-%%%\end{dmath}
-%%%\begin{dmath}\label{eqn:potentialMethods:1220}
-%%%( P + I Q )\gamma_0
-%%%=
-%%%\gamma_0 \lr{ \phi -v \bcA + \eta I \lr{ \phi_m - v \bcK } } \gamma_0
-%%%=
-%%%\phi -v \bcA + \eta \gamma_0 I \gamma_0 \lr{ \phi_m + v \bcK }
-%%%=
-%%%\phi -v \bcA - \eta I \lr{ \phi_m + v \bcK }
-%%%=
-%%%\phi -v \bcA - \eta I \phi_m - \eta v I \bcK,
-%%%\end{dmath}
-%%%\end{subequations}
-%%%
+There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the covariant formalism.
 
 \section{Covarient formulation (GA)}
 
@@ -477,10 +460,15 @@ the gradient, and the potential
 =
 L(\grad, P, Q)
 = \grad \wedge P + I (\grad \wedge Q)
-= \inv{2} \lr{ \rgrad P - P \lgrad }
-- \inv{2} \lr{ \rgrad I Q + I Q \lgrad }
 =
-\inv{2} \lr{ \rgrad (P -IQ) - (P + IQ) \lgrad },
+\inv{2} \lr{ \rgrad P - P \lgrad }
++ \frac{I}{2} \lr{ \rgrad Q - Q \lgrad }
+=
+\inv{2} \lr{ \rgrad P - P \lgrad }
++ \frac{1}{2} \lr{ -\rgrad I Q - I Q \lgrad }
+=
+\inv{2} \lr{ \rgrad (P -I Q) - (P + I Q) \lgrad }
+,
 \end{dmath}
 
 or
@@ -498,7 +486,7 @@ This can be put into correspondance with \cref{eqn:potentialMethods:1080} using 
 \begin{dmath}\label{eqn:potentialMethods:1100}
 \bcF
 =
-\inv{2} \lr{ (\rgrad \gamma_0) (\gamma_0 (P -IQ)) - ((P + IQ) \gamma_0)(\gamma_0 \lgrad) },
+\inv{2} \lr{ (-\rgrad \gamma_0) (-\gamma_0 (P -IQ)) - ((P + IQ) \gamma_0)(\gamma_0 \lgrad) },
 \end{dmath}
 
 where
@@ -506,13 +494,15 @@ where
 \begin{subequations}
 \label{eqn:potentialMethods:1120}
 \begin{dmath}\label{eqn:potentialMethods:1140}
-\grad \gamma_0
+-\grad \gamma_0
 =
-(\gamma^0 \partial_0 + \gamma^k \partial_k) \gamma_0
+-(\gamma^0 \partial_0 + \gamma^k \partial_k) \gamma_0
 =
-\partial_0 + \gamma^k \gamma_0 \partial_k
+-\partial_0 - \gamma^k \gamma_0 \partial_k
 =
-\inv{v} \partial_t - \spacegrad,
+\spacegrad
+-\inv{v} \partial_t
+,
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:1160}
 \gamma_0 \grad
@@ -521,7 +511,9 @@ where
 =
 \partial_0 - \gamma^k \gamma_0 \partial_k
 =
-\inv{v} \partial_t + \spacegrad,
+\spacegrad
++ \inv{v} \partial_t
+,
 \end{dmath}
 \end{subequations}
 
@@ -529,27 +521,33 @@ and
 \begin{subequations}
 \label{eqn:potentialMethods:1180}
 \begin{dmath}\label{eqn:potentialMethods:1200}
-\gamma_0 ( P - I Q )
+-\gamma_0 ( P - I Q )
 =
-\gamma_0 \gamma_0 \lr{ \phi -v \bcA - \eta I \lr{ \phi_m - v \bcK } }
+-\gamma_0 \gamma_0 \lr{ \phi -v \bcA + \eta I \lr{ \phi_m - v \bcK } }
 =
-\phi -v \bcA - \eta I \phi_m + \eta v I \bcK
+-\lr{ \phi -v \bcA + \eta I \phi_m - \eta v I \bcK }
+=
+- \phi
++ v \bcA
++ \eta v I \bcK
+- \eta I \phi_m
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:1220}
 ( P + I Q )\gamma_0
 =
-\gamma_0 \lr{ \phi -v \bcA + \eta I \lr{ \phi_m - v \bcK } } \gamma_0
+\lr{ \gamma_0 \lr{ \phi -v \bcA } + I \gamma_0 \eta \lr{ \phi_m - v \bcK } } \gamma_0
 =
-\phi -v \bcA + \eta \gamma_0 I \gamma_0 \lr{ \phi_m + v \bcK }
+\phi + v \bcA + I \eta \phi_m + I \eta v \bcK
 =
-\phi -v \bcA - \eta I \lr{ \phi_m + v \bcK }
-=
-\phi -v \bcA - \eta I \phi_m - \eta v I \bcK,
+\phi
++ v \bcA
++ \eta v I \bcK
++ \eta I \phi_m
+,
 \end{dmath}
 \end{subequations}
 
-FIXME: this doesn't compare against \cref{eqn:potentialMethods:1080} !?
-%TODO: compare this with the result obtained by assembling the potentials into a multivector in the non-covariant approach above.
+This recovers \cref{eqn:potentialMethods:1080} as desired.
 
 \section{Non-covarient formulation (GA)}
 

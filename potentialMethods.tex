@@ -269,6 +269,19 @@ or
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the covariant formalism.
 
+Observe that the specific function of the conjugate structure is to discard all the scalar and pseudoscalar grades in the multivector product.  This means that a single sided potential can also be used, provided it is wrapped in a grade selection operation
+
+\begin{dmath}\label{eqn:potentialMethods:1260}
+\bcF =
+\gpgrade{ \lr{ \spacegrad - \inv{v} \partial }
+   \lr{
+      - \phi
+      + v \bcA
+      + \eta I v \bcK
+      - \eta I \phi_m
+   } }{1,2}.
+\end{dmath}
+
 \section{Covarient formulation (GA)}
 
 The GA formulation of Maxwell's equation is
@@ -486,12 +499,6 @@ or
 }
 %\end{dmath}
 
-Alternatively, the potential can be written as a one sided operation using grade selection
-
-\begin{dmath}\label{eqn:potentialMethods:1240}
-\bcF = \gpgradetwo{ \grad ( P - I Q ) }.
-\end{dmath}
-
 Observe that \cref{eqn:potentialMethods:1000} can be
 put into correspondance with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
 
@@ -560,6 +567,12 @@ and
 \end{subequations}
 
 This recovers \cref{eqn:potentialMethods:1080} as desired.
+
+Finally, note that, like \cref{eqn:potentialMethods:1260}, the electromagnetic field can be expressed as a single sided gradient operation on a potential, if the multivector product is filtered with a four-bivector grade selection operation
+
+\begin{dmath}\label{eqn:potentialMethods:1240}
+\bcF = \gpgradetwo{ \grad ( P - I Q ) }.
+\end{dmath}
 
 \section{Non-covarient formulation (GA)}
 

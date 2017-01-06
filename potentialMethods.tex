@@ -34,8 +34,11 @@
 
 \section{Motivation}
 
-Geometric algebra (GA) allows for a compact description of Maxwell's equations in either an explicit 3D representation or a STA (covariant SpaceTime Algebra) representation.  The 3D GA and 
-STA representations Maxwell's equation both the form
+Geometric algebra (GA) allows for a compact description of Maxwell's equations in either an explicit 3D representation or a STA (SpaceTime Algebra
+\citep{doran2003gap} 
+) representation.  The 3D GA and
+STA 
+representations Maxwell's equation both the form
 
 \begin{dmath}\label{eqn:potentialMethods:1280}
 L \bcF = J,
@@ -71,13 +74,11 @@ The corresponding GA Maxwell equations in their respective 3D and STA forms are
 \end{dmath}
 \end{subequations}
 
-where the wave group velocity in the medium is \( v = 1/\sqrt{\epsilon\mu} \), and the medium is isotropic with 
-\( \bcB = \mu \bcH \), and \( \bcD = \epsilon \bcE \), and \( \grad, J, M \) are all four-vectors.
-
-The specific meanings of the terms in the STA representation will be spelled out below.
+where the wave group velocity in the medium is \( v = 1/\sqrt{\epsilon\mu} \), and the medium is isotropic with
+\( \bcB = \mu \bcH \), and \( \bcD = \epsilon \bcE \).  In the STA representation, \( \grad, J, M \) are all four-vectors, the specific meanings of which will be spelled out below.
 
 How to determine the potential equations and the field representation using the conventional distinct Maxwell's \cref{eqn:chapter3Notes:19} is well known.  The basic procedure is to consider the electric and magnetic sources in turn, and observe that in each case one of the electric or magnetic fields must have a curl representation.  The STA approach is similar, except that it can be observed that the field must have a four-curl representation for each type of source.  In the explicit 3D GA formalism
-\cref{eqn:potentialMethods:300} how to formulate a natural potential representation is not as obvious.  There is no longer an reason to set any component of the field equal to a curl, and the representation of the four curl from the STA approach is awkward.  Additionally, it is not obvious what form gauge invariance takes in the 3D representation.
+\cref{eqn:potentialMethods:300} how to formulate a natural potential representation is not as obvious.  There is no longer an reason to set any component of the field equal to a curl, and the representation of the four curl from the STA approach is awkward.  Additionally, it is not obvious what form gauge invariance takes in the 3D GA representation.
 
 \paragraph{New ideas (or believed to be) in this paper}
 
@@ -313,26 +314,13 @@ or
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the STA formalism.
 
-Observe that the specific function of the conjugate structure is to discard all the scalar and pseudoscalar grades in the multivector product.  This means that a single sided potential can also be used, provided it is wrapped in a grade selection operation
-
-\begin{dmath}\label{eqn:potentialMethods:1260}
-\bcF =
-\gpgrade{ \lr{ \spacegrad - \inv{v} \partial }
-   \lr{
-      - \phi
-      + v \bcA^\e
-      + \eta I v \bcA^\m
-      - \eta I \phi_m
-   } }{1,2}.
-\end{dmath}
-
 \section{Covarient formulation (GA)}
 
-Maxwell's equation in its explicit 3D form \cref{eqn:potentialMethods:300} can be 
+Maxwell's equation in its explicit 3D form \cref{eqn:potentialMethods:300} can be
 converted to STA form, by introducing a four-vector basis \( \setlr{ \gamma_\mu } \), where the spatial basis
 \( \setlr{ \Be_k = \gamma_k \gamma_0 } \)
 is reexpressed in terms of the Dirac basis \( \setlr{ \gamma_\mu } \).
-By multiplying from the left with \( \gamma_0 \) a STA form of Maxwell's equation 
+By multiplying from the left with \( \gamma_0 \) a STA form of Maxwell's equation
 \cref{eqn:potentialMethods:320}
 is obtained,
 where
@@ -598,49 +586,62 @@ and
 
 This recovers \cref{eqn:potentialMethods:1080} as desired.
 
-Finally, note that, like \cref{eqn:potentialMethods:1260}, the electromagnetic field can be expressed as a single sided gradient operation on a potential, if the multivector product is filtered with a four-bivector grade selection operation
-
-\begin{dmath}\label{eqn:potentialMethods:1240}
-\bcF = \gpgradetwo{ \grad ( P - I Q ) }.
-\end{dmath}
-
 \section{Non-covarient formulation (GA)}
 
-%%When Maxwell equation is in the non-STA form \cref{eqn:potentialMethods:300}, it is not obvious how to directly introduce a potential representation without first resorting to unpacking that equation into its vector convential form, or obtaining that potential directly from the STA representation.  Determining the potential representation of the field in both the conventional and STA formalisms started from observations that a wedge product was zero when one of the electric or magnetic sources was zero.  There must be some generalization of the curl operation that applies to the 3D multivector derivative operator of \cref{eqn:potentialMethods:300}.
-%%
-%%Given that four vectors have a multivector representation in \cref{eqn:potentialMethods:300}, and the source terms sum to a multivector with all grades, it is not unreasonable to expect that the potential will be a multivector with all grades.  This was seen explicitly when the covarient potential relation of \cref{eqn:potentialMethods:1000} was computed, where that four-potential multivector was found to be
-%%
-%%\begin{dmath}\label{eqn:potentialMethods:920}
-%%A = -\phi + v \bcA^\e
-%%+ \eta I v \bcA^\m
-%%- I \eta \phi_m
-%%.
-%%\end{dmath}
-%%
-%%The fact that a multivector potential (including all grades) is desired could also be guessed from the results of the conventional vector algebra potential found in \cref{eqn:potentialMethods:280}.  Such a guess is not entirely satifactory, since it does not easily yeild the structure of the differential operator on this potential.  In general, the expectation is that the potential will be of the form
-%%%however, such a guess is not entirely satisfactory.  It is perhaps only a natural guess if the STA GA formalism
-%%%is known, and it does not provide the structure of the differential operator on this potential.  Suppose that it is possible to derive the electromagnetic field from a potential given by
-%%
-%%\begin{dmath}\label{eqn:potentialMethods:960}
-%%A = \sum_{k=0}^3 A_k,
-%%\end{dmath}
-%%
-%%where \( A_k \) is of grade \( k \).  However, obtaining the electromagnetic field from this potential could have a structure potentially as general as
-%%
-%%\begin{dmath}\label{eqn:potentialMethods:940}
-%%\bcF =
-%%\inv{v} \PD{t}{}
-%%\sum_{k=0}^3 a_k
-%%A_k
-%%+ \spacegrad (b A_0 + c A_3) + \sum_{k=1}^2 \lr{ d_k \rspacegrad A_k + e_k A_k \lspacegrad }.
-%%\end{dmath}
-%%
-%%There are less degress of freedom possible for the gradients of the scalar and pseudoscalar potential components since those both commute with the gradient.
-%%The constants \( a_k, b, c, d_k, e_k \) could be determined by comparing this presumed representation with
-%%\cref{eqn:potentialMethods:1040}.
-%%
-%%TODO: figure out how \cref{eqn:potentialMethods:1080} can be obtained directly from Maxwell's equation without resorting to unpacking that into its components or resorting to the equivalent STA formalism.  Contrast this to the (gauge specific) single sided potential representation that Mauro found.
-%%
+In the conventional scalar plus vector differential representation of Maxwell's equations \cref{eqn:chapter3Notes:19}, given electric(magnetic) sources the structure of the electric(magnetic) potential follows from first setting the magnetic(electric) field equal to the curl of a vector potential.  The procedure for the STA GA form of Maxwell's equation was similar, where it was immediately evident that the field could be set to the four-curl of a four-vector potential (or the dual of such a curl for magnetic sources).
+
+In the 3D GA representation, there is no immediate rationale for introducing a curl or four-curl representation of the field.  Reconsilation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( P - I Q \), and that this can in fact be written as
+a single sided gradient operation on a potential, provided the multivector product is filtered with a four-bivector grade selection operation
+
+%\begin{dmath}\label{eqn:potentialMethods:1240}
+\boxedEquation{eqn:potentialMethods:1240}{
+\bcF = \gpgradetwo{ \grad ( P - I Q ) }.
+}
+%\end{dmath}
+
+Similarly, it can be observed that the
+specific function of the conjugate structure in the two sided potential representation of
+\cref{eqn:potentialMethods:1080}
+is to discard all the scalar and pseudoscalar grades in the multivector product.  This means that a single sided potential can also be used, provided it is wrapped in a grade selection operation
+
+%\begin{dmath}\label{eqn:potentialMethods:1260}
+\boxedEquation{eqn:potentialMethods:1260}{
+\bcF =
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} }
+   \lr{
+      - \phi
+      + v \bcA^\e
+      + \eta I v \bcA^\m
+      - \eta I \phi_m
+   } }{1,2}.
+}
+%\end{dmath}
+
+It is this grade selection operation that is really the fundamental defining action in the potential of the STA and conventional 3D representations of Maxwell's equations.  So, given Maxwell's equation in the 3D GA representation, defining a potential representation for the field is really just a demand that the field have the structure
+
+\begin{dmath}\label{eqn:potentialMethods:1320}
+\bcF = \gpgrade{ (\alpha \spacegrad + \beta \partial_t)( A_0 + A_1 + I( A_0' + A_1' ) }{1,2}.
+\end{dmath}
+
+This is a mandate that the electromagnetic field is the grades 1 and 2 components of the vector product of space and time derivative operators on a multivector field \( A = \sum_{k=0}^3 A_k = A_0 + A_1 + I( A_0' + A_1' ) \) that can potentially have any grade components.  There are more degrees of freedom in this specification than required, since the multivector can absorb one of the \( \alpha \) or \( \beta \) coefficients, so without loss of generality, one of these (say \( \alpha\)) can be set to 1.
+
+Expanding \cref{eqn:potentialMethods:1320} gives
+
+\begin{dmath}\label{eqn:potentialMethods:1340}
+\bcF
+=
+\spacegrad A_0
++ \beta \partial_t A_1
+- \spacegrad \cross A_1'
++ I (\spacegrad \cross A_1
++ \beta \partial_t A_1'
++ \spacegrad A_0')
+=
+\bcE + I \eta \bcH.
+\end{dmath}
+
+This naturally has all the right mixes of curls, gradients and time derivatives, all following as direct consequences of applying a grade selection operation to the action of a ``spacetime gradient'' on a general multivector potential.
+
 
 
 %}

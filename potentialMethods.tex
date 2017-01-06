@@ -28,7 +28,7 @@
 
 \beginArtNoToc
 
-\generatetitle{A comparision of potential methods}
+\generatetitle{A comparison of potential methods}
 %\chapter{A comparision of potential methods}
 %\label{chap:potentialMethods.tex}
 
@@ -53,7 +53,7 @@ where \( J \) represents the sources,
 
 is an electromagnetic field multivector, \( I = \Be_1 \Be_2 \Be_3 \) is the \R{3} pseudoscalar, and \( \eta = \sqrt{\mu/\epsilon} \) is the impedance of the media.
 
-When Maxwell's equations are extended to include magnetic sources in addition to conventional electric sources (as used in antenna-theory \citep{balanis2005antenna} and microwave enginnering \citep{pozar2009microwave}), they take the form
+When Maxwell's equations are extended to include magnetic sources in addition to conventional electric sources (as used in antenna-theory \citep{balanis2005antenna} and microwave engineering \citep{pozar2009microwave}), they take the form
 
 \input{../ece1229-antenna/MaxwellsStatement.tex}
 
@@ -84,7 +84,7 @@ How to determine the potential equations and the field representation using the 
 
 \begin{itemize}
 \item GA representation of Maxwell's equations including magnetic sources.
-\item Covariant GA formalism for Maxwell's equations including magnetic sources.
+\item STA GA formalism for Maxwell's equations including magnetic sources.
 \item Explicit form of the GA potential representation including both electric and magnetic sources.
 \item Demonstration of exactly how the 3D and STA potentials are related.
 \item (TODO) Explore the structure of gauge transformations when magnetic sources are included
@@ -150,7 +150,7 @@ Note that the Lorentz condition \( \PDi{t}{(\phi/v^2)} + \spacegrad \cdot \bcA^\
 
 \subsection{No electric sources}
 
-Without electric sources, a curl representation of the electric field can be assumed, satisfing Gauss's law
+Without electric sources, a curl representation of the electric field can be assumed, satisfying Gauss's law
 
 \boxedEquation{eqn:potentialMethods:140}{
 \bcD = - \spacegrad \cross \bcA^\m.
@@ -217,7 +217,7 @@ subject to the constraints \cref{eqn:potentialMethods:120} and \cref{eqn:potenti
 
 \subsection{Potential operator structure}
 
-Knowing that there is a simple underlying structure to the potential representation of the electromagnetic field in the covarient formalism inspires the question of whether that structure can be found directly using the scalar and vector potentials determined above.
+Knowing that there is a simple underlying structure to the potential representation of the electromagnetic field in the STA formalism inspires the question of whether that structure can be found directly using the scalar and vector potentials determined above.
 
 Specifically, what is the multivector representation \cref{eqn:potentialMethods:1020} of the electromagnetic field in terms of all the individual potential variables, and can an underlying structure for that field representation be found?  The composite field is
 
@@ -314,12 +314,12 @@ or
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the STA formalism.
 
-\section{Covarient formulation (GA)}
+\section{Potentials in the STA formalism.}
 
 Maxwell's equation in its explicit 3D form \cref{eqn:potentialMethods:300} can be
 converted to STA form, by introducing a four-vector basis \( \setlr{ \gamma_\mu } \), where the spatial basis
 \( \setlr{ \Be_k = \gamma_k \gamma_0 } \)
-is reexpressed in terms of the Dirac basis \( \setlr{ \gamma_\mu } \).
+is expressed in terms of the Dirac basis \( \setlr{ \gamma_\mu } \).
 By multiplying from the left with \( \gamma_0 \) a STA form of Maxwell's equation
 \cref{eqn:potentialMethods:320}
 is obtained,
@@ -459,7 +459,7 @@ So the general solution with both electric and magnetic sources is
 }
 %\end{dmath}
 
-subject to the constraints of \cref{eqn:potentialMethods:560} and \cref{eqn:potentialMethods:760}.  As before the four-potential \( {A^\m} \) can be put into correspondance with the conventional scalar and vector potentials by left multiplying with \( \gamma_0 \), which gives
+subject to the constraints of \cref{eqn:potentialMethods:560} and \cref{eqn:potentialMethods:760}.  As before the four-potential \( {A^\m} \) can be put into correspondence with the conventional scalar and vector potentials by left multiplying with \( \gamma_0 \), which gives
 
 \begin{dmath}\label{eqn:potentialMethods:820}
 \lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \lr{ {A^\m}_0 + \BA^\m } - \lr{ \inv{v} \partial_t + \spacegrad }\lr{ \inv{v} \partial_t {A^\m}_0 - \spacegrad \cdot \BA^\m } = v q_m - \bcM,
@@ -518,7 +518,7 @@ or
 %\end{dmath}
 
 Observe that \cref{eqn:potentialMethods:1000} can be
-put into correspondance with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
+put into correspondence with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
 
 \begin{dmath}\label{eqn:potentialMethods:1100}
 \bcF
@@ -586,11 +586,11 @@ and
 
 This recovers \cref{eqn:potentialMethods:1080} as desired.
 
-\section{Non-covarient formulation (GA)}
+\section{Potentials in the 3D Euclidean formalism}
 
 In the conventional scalar plus vector differential representation of Maxwell's equations \cref{eqn:chapter3Notes:19}, given electric(magnetic) sources the structure of the electric(magnetic) potential follows from first setting the magnetic(electric) field equal to the curl of a vector potential.  The procedure for the STA GA form of Maxwell's equation was similar, where it was immediately evident that the field could be set to the four-curl of a four-vector potential (or the dual of such a curl for magnetic sources).
 
-In the 3D GA representation, there is no immediate rationale for introducing a curl or four-curl representation of the field.  Reconsilation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( {A^\e} - I {A^\m} \), and that this can in fact be written as
+In the 3D GA representation, there is no immediate rationale for introducing a curl or the equivalent to a four-curl representation of the field.  Reconciliation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( {A^\e} - I {A^\m} \), and that this can in fact be written as
 a single sided gradient operation on a potential, provided the multivector product is filtered with a four-bivector grade selection operation
 
 %\begin{dmath}\label{eqn:potentialMethods:1240}

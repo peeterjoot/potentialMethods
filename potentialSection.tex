@@ -126,7 +126,7 @@ which recovers the expected potential representations of the fields
 Because the potential representation of the field is expressed as a grade 1,2 selection, the addition of scalar or pseudoscalar components to the grade selection will not alter the field.  In particular, it is possible to alter the multivector potential
 
 \begin{dmath}\label{eqn:potentialSection:160}
-A \rightarrow A + \lr{ \spacegrad + \inv{v} \PD{t}{} \psi,
+A \rightarrow A + \lr{ \spacegrad + \inv{v} \PD{t}{}} \psi,
 \end{dmath}
 
 where \( \psi \) is any multivector field with scalar and pseudoscalar grades, without changing the field
@@ -134,19 +134,177 @@ where \( \psi \) is any multivector field with scalar and pseudoscalar grades, w
 \begin{dmath}\label{eqn:potentialSection:180}
 \bcF
 \rightarrow
-\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{}
-\lr{ A + \lr{ \spacegrad + \inv{v} \PD{t}{} \psi }
- }{1,2}
+\gpgrade{
+   \lr{ \spacegrad - \inv{v} \PD{t}{} }
+   \lr{ A + \lr{ \spacegrad + \inv{v} \PD{t}{}} \psi }
+}{1,2}
 =
 \bcF +
-\gpgrade{ \lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} \psi
- }{1,2}
+\gpgrade{
+   \lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{}} \psi
+}{1,2}
 .
 \end{dmath}
 
-That last grade selection is zero, since \( \psi \) has no vector or bivector grades.
+That last grade selection is zero, since \( \psi \) has no vector or bivector grades, demonstrating that the electromagnetic field is invariant with respect to this multivector potential transformation.
+
+It is worth looking how such a transformation impacts each grade of the potential.  Let \( \psi = v \psi^\e + \eta v I \psi^\m \), where \( \psi^\e \) and \( \psi^\m \) are both scalar fields.  The gauge transformation provides the mapping
+
+\begin{subequations}
+\label{eqn:potentialSection:220}
+\begin{dmath}\label{eqn:potentialSection:200}
+- \phi \rightarrow - \phi + \PD{t}{} \psi^\e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:240}
+v \bcA^\e \rightarrow v \bcA^\e + v \spacegrad \psi^e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:260}
+I v \bcA^\m \rightarrow I v \bcA^\m + I v \spacegrad \psi^m
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:280}
+- I \eta \phi_m \rightarrow -I \eta \phi_m + I \eta \PD{t}{} \psi^\m,
+\end{dmath}
+\end{subequations}
+
+or
+
+\begin{subequations}
+\label{eqn:potentialSection:400}
+\begin{dmath}\label{eqn:potentialSection:420}
+\phi \rightarrow \phi - \PD{t}{} \psi^\e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:440}
+\bcA^\e \rightarrow \bcA^\e + \spacegrad \psi^e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:460}
+\bcA^\m \rightarrow \bcA^\m + \spacegrad \psi^m
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:480}
+\phi_m \rightarrow \phi_m - \PD{t}{} \psi^\m.
+\end{dmath}
+\end{subequations}
+
+These have the alternation of sign that is found in the usual recipe for gauge transformation of the scalar and vector potentials.  In conventional electromagnetism, the first two relations are usually found by observing it is possible to add any gradient to the vector potential, and then finding the transformation consequences that that choice imposes on the electric field.  With the grade selection formulation of the electromagnetic field, this special coupling of the field potentials comes for free without having to consider the curl of a specific field component.
+
+Note that the latter two dual transformation relationships are for magnetic sources, and are usually expressed in the frequency domain, where the gauge transformations take the form
+
+\begin{subequations}
+\label{eqn:potentialSection:300}
+\begin{dmath}\label{eqn:potentialSection:320}
+\phi \rightarrow \phi - j \omega \psi^\e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:340}
+\BA^\e \rightarrow \BA^\e + \spacegrad \psi^e
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:360}
+\BA^\m \rightarrow \BA^\m + \spacegrad \psi^m
+\end{dmath}
+\begin{dmath}\label{eqn:potentialSection:380}
+\phi_m \rightarrow \phi_m -j \omega \psi^\m.
+\end{dmath}
+\end{subequations}
 
 \subsection{Lorenz gauge}
 
+With the flexibility to alter make a gauge transformation of the potential, it is useful to examine the conditions for which it is possible to express the electromagnetic field without any grade selection operation.  That is
+
+\begin{dmath}\label{eqn:potentialSection:1720}
+\bcF
+=
+\lr{ \spacegrad - \inv{v} \PD{t}{} }
+\lr{
+      - \phi
+      + v \bcA^\e
+      + \eta I \lr{ -\phi_m + v \bcA^\m }
+}.
+\end{dmath}
+
+There should be no a-priori assumption that such a field representation has no scalar, nor no pseudoscalar components, which can be seen by the explicit expansion in grades
+
+\begin{dmath}\label{eqn:potentialSection:1640}
+\begin{aligned}
+\bcF
+&=
+\lr{ \spacegrad - \inv{v} \PD{t}{} } A \\
+&=
+\lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ -\phi + v \bcA^\e + \eta I \lr{ -\phi_m + v \bcA^\m } } \\
+&=
+\inv{v} \partial_t \phi
++ v \spacegrad \cdot \bcA^\e  \\
+&-\spacegrad \phi
++ I \eta v \spacegrad \wedge \bcA^\m
+- \partial_t \bcA^\e  \\
+&+ v \spacegrad \wedge \bcA^\e
+- \eta I \spacegrad \phi_m
+- I \eta \partial_t \bcA^\m \\
+&+ \eta I \inv{v} \partial_t \phi_m
++ I \eta v \spacegrad \cdot \bcA^\m,
+\end{aligned}
+\end{dmath}
+
+so if this potential representation has only vector and bivector grades, it must be true that
+
+\begin{dmath}\label{eqn:potentialSection:1660}
+\begin{aligned}
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e &= 0 \\
+\inv{v} \partial_t \phi_m + v \spacegrad \cdot \bcA^\m &= 0.
+\end{aligned}
+\end{dmath}
+
+The first is the well known Lorenz gauge condition, whereas the second is the dual of that condition for magnetic sources.
+
+Should one of these conditions, say the Lorenz condition for the electric source potentials, be non-zero, then it is possible to make a potential transformation for which this condition is zero
+
+\begin{dmath}\label{eqn:potentialSection:1680}
+0 \ne
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
+=
+\inv{v} \partial_t (\phi' - \partial_t \psi) + v \spacegrad \cdot (\bcA' + \spacegrad \psi)
+=
+\inv{v} \partial_t \phi' + v \spacegrad \bcA'
++ v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi,
+\end{dmath}
+
+so if \( \inv{v} \partial_t \phi' + v \spacegrad \bcA' \) is zero, \( \psi \) must be found such that
+\begin{dmath}\label{eqn:potentialSection:1700}
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
+= v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi.
+\end{dmath}
+
+Such a gauge transformation requires a non-homogeneous wave equation solution, or equivalently in the frequency domain requires the solution of a Helmholtz equation
+
+\begin{dmath}\label{eqn:potentialSection:1740}
+\inv{v} j \omega \phi + v \spacegrad \cdot \bcA^\e
+= v \lr{ \spacegrad^2 + k^2 } \psi.
+\end{dmath}
+
+A similar transformation is also clearly possible to eliminate any pseudoscalar grades in \cref{eqn:potentialSection:1720}.  Such a potential representation is desirable since
+Maxwell's equations for such a potential are completely decoupled
+
+\begin{dmath}\label{eqn:potentialSection:1760}
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } A = J,
+\end{dmath}
+
+which is equivalent to precisely one non-homogenious wave equation for each grade source and potential
+
+\begin{dmath}\label{eqn:potentialSection:1600}
+\begin{aligned}
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi &= - \inv{\epsilon} q_e \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\e &= - \mu \bcJ \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi_m &= - \frac{I}{\mu} q_m \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\m &= - I \epsilon \bcM,
+\end{aligned}
+\end{dmath}
+
+or equivalently, in the frequency domain, a forced Helmholtz equation for each grade
+
+\begin{dmath}\label{eqn:potentialSection:1780}
+\begin{aligned}
+\lr{ \spacegrad^2 + k^2 } \phi &= - \inv{\epsilon} q_e \\
+\lr{ \spacegrad^2 + k^2 } \BA^\e &= - \mu \BJ \\
+\lr{ \spacegrad^2 + k^2 } \phi_m &= - \frac{1}{\mu} q_m \\
+\lr{ \spacegrad^2 + k^2 } \BA^\m &= - \epsilon \BM.
+\end{aligned}
+\end{dmath}
+
 %}
-\EndArticle

@@ -1,0 +1,152 @@
+%
+% Copyright © 2017 Peeter Joot.  All Rights Reserved.
+% Licenced as described in the file LICENSE under the root directory of this GIT repository.
+%
+%{
+
+\subsection{General potential representation}
+
+The potential representation of the electromagnetic field has the structure
+
+\begin{dmath}\label{eqn:potentialSection:20}
+\bcF
+=
+\gpgrade{ \lr{ \alpha \spacegrad + \beta \PD{t}{} } A }{1,2},
+\end{dmath}
+
+where \( A \) is a multivector generally containing all grades, and \( \alpha \) and \( \beta \) are constants fixed by the units desired.  For SI units a convenient representation is
+
+%\begin{dmath}\label{eqn:potentialSection:40}
+\boxedEquation{eqn:potentialSection:40}{
+\bcF
+=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} }
+\lr{
+      - \phi
+      + v \bcA^\e
+      + \eta I \lr{ -\phi_m + v \bcA^\m }
+}
+ }{1,2},
+}
+%\end{dmath}
+
+or in the frequency domain
+
+\begin{dmath}\label{eqn:potentialSection:60}
+\bcF
+=
+\gpgrade{ \lr{ \spacegrad - j k }
+\lr{
+      - \phi
+      + v \BA^\e
+      + \eta I \lr{ -\phi_m + v \BA^\m }
+}
+ }{1,2}.
+\end{dmath}
+
+where \( \bcA^\e,\BA^\e \) is the vector potential for electric sources and \( \bcA^\m,\BA^\m \) is the vector potential for magnetic sources, and \( \phi, \phi_m \) are the scalar potentials for electric and magnetic sources respectively.  Here superscripts are used to distinguish the vector potentials, in contrast to the use of \( \BA, \BF \) found in some sources (\citep{balanis2005antenna}), since it is desirable to reserve \( \BF \) for the complete electromagnetic field in the frequency domain.
+No separate notation has been used to distingish the scalar and pseudoscalar potentials in the time and frequency domain, since the meaning will be clear from the context.
+
+Consider the expansion of \cref{eqn:potentialSection:40} for a multivector potential that can describe electric sources (i.e. having scalar and vector grades)
+
+\begin{dmath}\label{eqn:potentialSection:80}
+\bcF
+=
+\bcE + I \eta \bcH
+=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} }
+\lr{
+      - \phi
+      + v \bcA^\e
+}
+}{1,2}
+=
+-\spacegrad \phi
+-\PD{t}{\bcA^e}
++ v \spacegrad \wedge \bcA^\e
+=
+-\spacegrad \phi
+-\PD{t}{\bcA^e}
++ v \spacegrad \wedge \bcA^\e.
+=
+-\spacegrad \phi
+-\PD{t}{\bcA^e}
++ I v \spacegrad \cross \bcA^\e.
+\end{dmath}
+
+This recovers the usual electric and magnetic field relations
+
+\begin{dmath}\label{eqn:potentialSection:100}
+\begin{aligned}
+\bcE &= -\spacegrad \phi -\PD{t}{\bcA^e} \\
+\mu \bcH &= \spacegrad \cross \bcA^\e.
+\end{aligned}
+\end{dmath}
+
+Observe that the grade selection encodes the precise reciepe required to produce the desired combination of gradients, curls and time partials.
+
+As a second example, consider a multivector potential for magnetic sources in the frequency domain, containing bivector and pseudoscalar components
+
+\begin{dmath}\label{eqn:potentialSection:120}
+\BF
+=
+\BE + I \eta \BH
+=
+\gpgrade{ \lr{ \spacegrad - j k }
+\lr{
+      - I \eta \phi_m
+      + I \eta v \BA^\m
+}
+}{1,2}
+=
+I \eta v \spacegrad \wedge \BA^\m
+-\eta I j k v \BA^\m
+- I \eta \spacegrad \phi_m
+=
+- \eta v \spacegrad \cross \BA^\m
++ \eta I \lr
+{
+-\spacegrad \phi_m
+-j \omega \BA^\m
+},
+\end{dmath}
+
+which recovers the expected potential representations of the fields
+
+\begin{dmath}\label{eqn:potentialSection:140}
+\begin{aligned}
+\BE &= -\inv{\epsilon} \spacegrad \cross \BA^\m \\
+\BH &= -\spacegrad \phi_m
+-j \omega \BA^\m.
+\end{aligned}
+\end{dmath}
+
+\subsection{Gauge transformations}
+
+Because the potential representation of the field is expressed as a grade 1,2 selection, the addition of scalar or pseudoscalar components to the grade selection will not alter the field.  In particular, it is possible to alter the multivector potential
+
+\begin{dmath}\label{eqn:potentialSection:160}
+A \rightarrow A + \lr{ \spacegrad + \inv{v} \PD{t}{} \psi,
+\end{dmath}
+
+where \( \psi \) is any multivector field with scalar and pseudoscalar grades, without changing the field
+
+\begin{dmath}\label{eqn:potentialSection:180}
+\bcF
+\rightarrow
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{}
+\lr{ A + \lr{ \spacegrad + \inv{v} \PD{t}{} \psi }
+ }{1,2}
+=
+\bcF +
+\gpgrade{ \lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} \psi
+ }{1,2}
+.
+\end{dmath}
+
+That last grade selection is zero, since \( \psi \) has no vector or bivector grades.
+
+\subsection{Lorenz gauge}
+
+%}
+\EndArticle

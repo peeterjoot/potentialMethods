@@ -5,10 +5,7 @@
 %{
 \input{../latex/blogpost.tex}
 \renewcommand{\basename}{potentialMethods.tex}
-%\renewcommand{\dirname}{notes/phy1520/}
 \renewcommand{\dirname}{notes/ece1228-electromagnetic-theory/}
-%\newcommand{\dateintitle}{}
-%\newcommand{\keywords}{}
 
 \input{../latex/peeter_prologue_print2.tex}
 
@@ -16,21 +13,11 @@
 \usepackage{peeters_braket}
 \usepackage{peeters_figures}
 \usepackage{siunitx}
-%\usepackage{mhchem} % \ce{}
 \usepackage{macros_bm} % \bcM
-%\usepackage{macros_qed} % \qedmarker
-%\usepackage{txfonts} % \ointclockwise
-
-\newcommand{\lpartialt}[0]{{\stackrel{ \leftarrow }{\partial_t}}}
-\newcommand{\rpartialt}[0]{{\stackrel{ \rightarrow }{\partial_t}}}
-\newcommand{\e}[0]{{(\mathrm{e})}}
-\newcommand{\m}[0]{{(\mathrm{m})}}
 
 \beginArtNoToc
 
-\generatetitle{A comparison of Geometric Algebra electrodynamic potential methods}
-%\chapter{A comparision of potential methods}
-%\label{chap:potentialMethods.tex}
+\generatetitle{A comparison of potential methods}
 
 \section{Motivation}
 
@@ -55,16 +42,24 @@ is an electromagnetic field multivector, \( I = \Be_1 \Be_2 \Be_3 \) is the \R{3
 
 When Maxwell's equations are extended to include magnetic sources in addition to conventional electric sources (as used in antenna-theory \citep{balanis2005antenna} and microwave engineering \citep{pozar2009microwave}), they take the form
 
-\input{../ece1229-antenna/MaxwellsStatement.tex}
+\begin{dmath}\label{eqn:chapter3Notes:20}
+\spacegrad \cross \bcE = - \bcM - \PD{t}{\bcB}
+\end{dmath}
+\begin{dmath}\label{eqn:chapter3Notes:40}
+\spacegrad \cross \bcH = \bcJ + \PD{t}{\bcD}
+\end{dmath}
+\begin{dmath}\label{eqn:chapter3Notes:60}
+\spacegrad \cdot \bcD = q_\txte
+\end{dmath}
+\begin{dmath}\label{eqn:chapter3Notes:80}
+\spacegrad \cdot \bcB = q_\txtm.
+\end{dmath}
 
 The corresponding GA Maxwell equations in their respective 3D and STA forms are
 
-\begin{subequations}
-\label{eqn:potentialMethods:1300}
 \begin{dmath}\label{eqn:potentialMethods:300}
 \lr{ \spacegrad + \inv{v} \PD{t}{} } \bcF
 =
-%\inv{\epsilon v}
 \eta
 \lr{ v q_\txte - \bcJ }
 + I \lr{ v q_\txtm - \bcM }
@@ -72,15 +67,13 @@ The corresponding GA Maxwell equations in their respective 3D and STA forms are
 \begin{dmath}\label{eqn:potentialMethods:320}
 \grad \bcF = \eta J - I M,
 \end{dmath}
-\end{subequations}
 
 where the wave group velocity in the medium is \( v = 1/\sqrt{\epsilon\mu} \), and the medium is isotropic with
 \( \bcB = \mu \bcH \), and \( \bcD = \epsilon \bcE \).  In the STA representation, \( \grad, J, M \) are all four-vectors, the specific meanings of which will be spelled out below.
 
-How to determine the potential equations and the field representation using the conventional distinct Maxwell's \cref{eqn:chapter3Notes:19} is well known.  The basic procedure is to consider the electric and magnetic sources in turn, and observe that in each case one of the electric or magnetic fields must have a curl representation.  The STA approach is similar, except that it can be observed that the field must have a four-curl representation for each type of source.  In the explicit 3D GA formalism
+How to determine the potential equations and the field representation using the conventional distinct Maxwell's \cref{eqn:chapter3Notes:20}, ... is well known.  The basic procedure is to consider the electric and magnetic sources in turn, and observe that in each case one of the electric or magnetic fields must have a curl representation.  The STA approach is similar, except that it can be observed that the field must have a four-curl representation for each type of source.  In the explicit 3D GA formalism
 \cref{eqn:potentialMethods:300} how to formulate a natural potential representation is not as obvious.  There is no longer an reason to set any component of the field equal to a curl, and the representation of the four curl from the STA approach is awkward.  Additionally, it is not obvious what form gauge invariance takes in the 3D GA representation.
 
-%\paragraph{New ideas (or believed to be) in this paper}
 \paragraph{Ideas explored in these notes}
 
 \begin{itemize}
@@ -97,121 +90,120 @@ How to determine the potential equations and the field representation using the 
 
 \subsection{No magnetic sources}
 
-When magnetic sources are omitted, it follows from \cref{eqn:chapter3Notes:80} that there is some \( \bcA^\e \) for which
+When magnetic sources are omitted, it follows from \cref{eqn:chapter3Notes:80} that there is some \( \bcA^{\mathrm{e}} \) for which
 
-%\begin{dmath}\label{eqn:potentialMethods:20}
-\boxedEquation{eqn:potentialMethods:20}{
-\bcB = \spacegrad \cross \bcA^\e,
+\begin{dmath}\label{eqn:potentialMethods:20}
+\boxed{
+\bcB = \spacegrad \cross \bcA^{\mathrm{e}},
 }
-%\end{dmath}
+\end{dmath}
 
 Substitution into Faraday's law \cref{eqn:chapter3Notes:20} gives
 
 \begin{dmath}\label{eqn:potentialMethods:40}
-\spacegrad \cross \bcE = - \PD{t}{}\lr{ \spacegrad \cross \bcA^\e },
+\spacegrad \cross \bcE = - \PD{t}{}\lr{ \spacegrad \cross \bcA^{\mathrm{e}} },
 \end{dmath}
 
 or
 \begin{dmath}\label{eqn:potentialMethods:60}
-\spacegrad \cross \lr{ \bcE + \PD{t}{ \bcA^\e } } = 0.
+\spacegrad \cross \lr{ \bcE + \PD{t}{ \bcA^{\mathrm{e}} } } = 0.
 \end{dmath}
 
 A gradient representation of this curled quantity, say \( -\spacegrad \phi \), will provide the required zero
 
-%\begin{dmath}\label{eqn:potentialMethods:80}
-\boxedEquation{eqn:potentialMethods:80}{
-\bcE = -\spacegrad \phi -\PD{t}{ \bcA^\e }.
+\begin{dmath}\label{eqn:potentialMethods:80}
+\boxed{
+\bcE = -\spacegrad \phi -\PD{t}{ \bcA^{\mathrm{e}} }.
 }
-%\end{dmath}
+\end{dmath}
 
 The final two Maxwell equations yield
 
 \begin{dmath}\label{eqn:potentialMethods:100}
 \begin{aligned}
--\spacegrad^2 \bcA^\e + \spacegrad \lr{ \spacegrad \cdot \bcA^\e } &= \mu \lr{ \bcJ + \epsilon \PD{t}{} \lr{ -\spacegrad \phi -\PD{t}{ \bcA^\e } } } \\
-\spacegrad \cdot \lr{ -\spacegrad \phi -\PD{t}{ \bcA^\e } } &= q_e/\epsilon,
+-\spacegrad^2 \bcA^{\mathrm{e}} + \spacegrad \lr{ \spacegrad \cdot \bcA^{\mathrm{e}} } &= \mu \lr{ \bcJ + \epsilon \PD{t}{} \lr{ -\spacegrad \phi -\PD{t}{ \bcA^{\mathrm{e}} } } } \\
+\spacegrad \cdot \lr{ -\spacegrad \phi -\PD{t}{ \bcA^{\mathrm{e}} } } &= q_e/\epsilon,
 \end{aligned}
 \end{dmath}
 
 or
-%\begin{dmath}\label{eqn:potentialMethods:120}
-\boxedEquation{eqn:potentialMethods:120}{
+\begin{dmath}\label{eqn:potentialMethods:120}
+\boxed{
 \begin{aligned}
-\spacegrad^2 \bcA^\e - \inv{v^2} \PDSq{t}{ \bcA^\e }
+\spacegrad^2 \bcA^{\mathrm{e}} - \inv{v^2} \PDSq{t}{ \bcA^{\mathrm{e}} }
 - \spacegrad \lr{
 \inv{v^2} \PD{t}{\phi}
-+\spacegrad \cdot \bcA^\e
++\spacegrad \cdot \bcA^{\mathrm{e}}
 }
 &= -\mu \bcJ \\
-\spacegrad^2 \phi + \PD{t}{} \lr{ \spacegrad \cdot \bcA^\e } &= -q_e/\epsilon.
+\spacegrad^2 \phi + \PD{t}{} \lr{ \spacegrad \cdot \bcA^{\mathrm{e}} } &= -q_e/\epsilon.
 \end{aligned}
 }
-%\end{dmath}
+\end{dmath}
 
-Note that the Lorentz condition \( \PDi{t}{(\phi/v^2)} + \spacegrad \cdot \bcA^\e = 0 \) can be imposed to decouple these, leaving non-homogeneous wave equations for the vector and scalar potentials respectively.
+Note that the Lorentz condition \( \PDi{t}{(\phi/v^2)} + \spacegrad \cdot \bcA^{\mathrm{e}} = 0 \) can be imposed to decouple these, leaving non-homogeneous wave equations for the vector and scalar potentials respectively.
 
 \subsection{No electric sources}
 
 Without electric sources, a curl representation of the electric field can be assumed, satisfying Gauss's law
 
-\boxedEquation{eqn:potentialMethods:140}{
-\bcD = - \spacegrad \cross \bcA^\m.
+\begin{dmath}\label{eqn:potentialMethods:140}
+\boxed{
+\bcD = - \spacegrad \cross \bcA^{\mathrm{m}}.
 }
+\end{dmath}
 
 Substitution into the Maxwell-Faraday law gives
 \begin{dmath}\label{eqn:potentialMethods:160}
-\spacegrad \cross \lr{ \bcH + \PD{t}{\bcA^\m} } = 0.
+\spacegrad \cross \lr{ \bcH + \PD{t}{\bcA^{\mathrm{m}}} } = 0.
 \end{dmath}
 
 This is satisfied with any gradient, say, \( -\spacegrad \phi_m \), providing a potential representation for the magnetic field
 
-%\begin{dmath}\label{eqn:potentialMethods:180}
-\boxedEquation{eqn:potentialMethods:180}{
-\bcH = -\spacegrad \phi_m - \PD{t}{\bcA^\m}.
+\begin{dmath}\label{eqn:potentialMethods:180}
+\boxed{
+\bcH = -\spacegrad \phi_m - \PD{t}{\bcA^{\mathrm{m}}}.
 }
-%\end{dmath}
+\end{dmath}
 
 The remaining Maxwell equations provide the required constraints on the potentials
 
-\begin{subequations}
-\label{eqn:potentialMethods:200}
 \begin{dmath}\label{eqn:potentialMethods:220}
--\spacegrad^2 \bcA^\m + \spacegrad \lr{ \spacegrad \cdot \bcA^\m } = -\epsilon
+-\spacegrad^2 \bcA^{\mathrm{m}} + \spacegrad \lr{ \spacegrad \cdot \bcA^{\mathrm{m}} } = -\epsilon
 \lr{
    -\bcM - \mu \PD{t}{}
    \lr{
-      -\spacegrad \phi_m - \PD{t}{\bcA^\m}
+      -\spacegrad \phi_m - \PD{t}{\bcA^{\mathrm{m}}}
    }
 }
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:240}
 \spacegrad \cdot
 \lr{
--\spacegrad \phi_m - \PD{t}{\bcA^\m}
+-\spacegrad \phi_m - \PD{t}{\bcA^{\mathrm{m}}}
 }
 = \inv{\mu} q_m,
 \end{dmath}
-\end{subequations}
 
 or
-%\begin{dmath}\label{eqn:potentialMethods:260}
-\boxedEquation{eqn:potentialMethods:260}{
+\begin{dmath}\label{eqn:potentialMethods:260}
+\boxed{
 \begin{aligned}
-\spacegrad^2 \bcA^\m - \inv{v^2} \PDSq{t}{\bcA^\m} - \spacegrad \lr{ \inv{v^2} \PD{t}{\phi_m} + \spacegrad \cdot \bcA^\m } &= -\epsilon \bcM \\
-\spacegrad^2 \phi_m + \PD{t}{}\lr{ \spacegrad \cdot \bcA^\m } &= -\inv{\mu} q_m.
+\spacegrad^2 \bcA^{\mathrm{m}} - \inv{v^2} \PDSq{t}{\bcA^{\mathrm{m}}} - \spacegrad \lr{ \inv{v^2} \PD{t}{\phi_m} + \spacegrad \cdot \bcA^{\mathrm{m}} } &= -\epsilon \bcM \\
+\spacegrad^2 \phi_m + \PD{t}{}\lr{ \spacegrad \cdot \bcA^{\mathrm{m}} } &= -\inv{\mu} q_m.
 \end{aligned}
 }
-%\end{dmath}
+\end{dmath}
 
 The general solution to Maxwell's equations is therefore
 \begin{dmath}\label{eqn:potentialMethods:280}
 \begin{aligned}
 \bcE &=
--\spacegrad \phi -\PD{t}{ \bcA^\e }
-- \inv{\epsilon} \spacegrad \cross \bcA^\m \\
+-\spacegrad \phi -\PD{t}{ \bcA^{\mathrm{e}} }
+- \inv{\epsilon} \spacegrad \cross \bcA^{\mathrm{m}} \\
 \bcH &=
-\inv{\mu} \spacegrad \cross \bcA^\e
--\spacegrad \phi_m - \PD{t}{\bcA^\m},
+\inv{\mu} \spacegrad \cross \bcA^{\mathrm{e}}
+-\spacegrad \phi_m - \PD{t}{\bcA^{\mathrm{m}}},
 \end{aligned}
 \end{dmath}
 
@@ -226,12 +218,12 @@ Specifically, what is the multivector representation \cref{eqn:potentialMethods:
 \begin{dmath}\label{eqn:potentialMethods:280b}
 \bcF
 =
--\spacegrad \phi -\PD{t}{ \bcA^\e }
-- \inv{\epsilon} \spacegrad \cross \bcA^\m \\
+-\spacegrad \phi -\PD{t}{ \bcA^{\mathrm{e}} }
+- \inv{\epsilon} \spacegrad \cross \bcA^{\mathrm{m}} \\
 + I \eta
 \lr{
-\inv{\mu} \spacegrad \cross \bcA^\e
--\spacegrad \phi_m - \PD{t}{\bcA^\m}
+\inv{\mu} \spacegrad \cross \bcA^{\mathrm{e}}
+-\spacegrad \phi_m - \PD{t}{\bcA^{\mathrm{m}}}
 }.
 \end{dmath}
 
@@ -241,11 +233,11 @@ Can this be factored into into multivector operator and multivector potentials? 
 \begin{aligned}
 \bcF
 &=
-- \PD{t}{ \bcA^\e }
-- \eta \PD{t}{I \bcA^\m}
+- \PD{t}{ \bcA^{\mathrm{e}} }
+- \eta \PD{t}{I \bcA^{\mathrm{m}}}
 - \spacegrad \lr{ \phi - \eta I \phi_m } \\
-&\quad + \frac{\eta}{2 \mu} \lr{ \rspacegrad \bcA^\e - \bcA^\e \lspacegrad }
-+ \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcA^\m - I \bcA^\m \lspacegrad }.
+&\quad + \frac{\eta}{2 \mu} \lr{ \rspacegrad \bcA^{\mathrm{e}} - \bcA^{\mathrm{e}} \lspacegrad }
++ \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcA^{\mathrm{m}} - I \bcA^{\mathrm{m}} \lspacegrad }.
 \end{aligned}
 \end{dmath}
 
@@ -256,63 +248,51 @@ gradient and the time partials can be grouped together
 \begin{aligned}
 \bcF
 &=
-- \PD{t}{ } \lr{\bcA^\e + \eta I \bcA^\m}
+- \PD{t}{ } \lr{\bcA^{\mathrm{e}} + \eta I \bcA^{\mathrm{m}}}
 - \spacegrad \lr{ \phi + \eta I \phi_m }
-+ \frac{v}{2} \lr{ \rspacegrad (\bcA^\e + I \eta \bcA^\m) - (\bcA^\e + I \eta \bcA^\m) \lspacegrad } \\
-%=
-%- \inv{v} \PD{t}{ (v \bcA^\e) } + \frac{1}{2} \lr{ \rspacegrad (v \bcA^\e) - (v \bcA^\e) \lspacegrad }
-%- \inv{v} \PD{t}{} (\eta v I \bcA^\m)
-%+ \frac{1}{2 } \lr{ \rspacegrad (\eta v I \bcA^\m) - (\eta v I \bcA^\m) \lspacegrad }
-%- \spacegrad \lr{ \phi + \eta I \phi_m }
++ \frac{v}{2} \lr{ \rspacegrad (\bcA^{\mathrm{e}} + I \eta \bcA^{\mathrm{m}}) - (\bcA^{\mathrm{e}} + I \eta \bcA^{\mathrm{m}}) \lspacegrad } \\
 &=
 \inv{2} \lr{
-   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ v \bcA^\e + \eta v I \bcA^\m }
+   \lr{ \rspacegrad - \inv{v} {\stackrel{ \rightarrow }{\partial_t}} } \lr{ v \bcA^{\mathrm{e}} + \eta v I \bcA^{\mathrm{m}} }
    -
-   \lr{ v \bcA^\e + \eta v I \bcA^\m} \lr{ \lspacegrad + \inv{v} \lpartialt }
+   \lr{ v \bcA^{\mathrm{e}} + \eta v I \bcA^{\mathrm{m}}} \lr{ \lspacegrad + \inv{v} {\stackrel{ \leftarrow }{\partial_t}} }
 } \\
 &+\quad \inv{2} \lr{
-   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ -\phi - \eta I \phi_m }
-   - \lr{ \phi + \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
+   \lr{ \rspacegrad - \inv{v} {\stackrel{ \rightarrow }{\partial_t}} } \lr{ -\phi - \eta I \phi_m }
+   - \lr{ \phi + \eta I \phi_m } \lr{ \lspacegrad + \inv{v} {\stackrel{ \leftarrow }{\partial_t}} }
 }
-% \\
-%&=
-%- \inv{2} \Biglr{
-%   \lr{ \rspacegrad - \inv{v} \rpartialt } \lr{ - v \bcA^\e - \eta v I \bcA^\m +  \phi + \eta I \phi_m } \\
-%   &\qquad -
-%   \lr{ - v \bcA^\e - \eta v I \bcA^\m - \phi - \eta I \phi_m } \lr{ \lspacegrad + \inv{v} \lpartialt }
-%}
 ,
 \end{aligned}
 \end{dmath}
 
 or
 
-%\begin{dmath}\label{eqn:potentialMethods:1080}
-\boxedEquation{eqn:potentialMethods:1080}{
+\begin{dmath}\label{eqn:potentialMethods:1080}
+\boxed{
 \begin{aligned}
 \bcF
 &=
 \inv{2} \Biglr{
-   \lr{ \rspacegrad - \inv{v} \rpartialt }
+   \lr{ \rspacegrad - \inv{v} {\stackrel{ \rightarrow }{\partial_t}} }
    \lr{
       - \phi
-      + v \bcA^\e
-      + \eta I v \bcA^\m
+      + v \bcA^{\mathrm{e}}
+      + \eta I v \bcA^{\mathrm{m}}
       - \eta I \phi_m
    } \\
    &\qquad -
    \lr{
       \phi
-      + v \bcA^\e
-      + \eta I v \bcA^\m
+      + v \bcA^{\mathrm{e}}
+      + \eta I v \bcA^{\mathrm{m}}
       + \eta I \phi_m
    }
-   \lr{ \lspacegrad + \inv{v} \lpartialt }
+   \lr{ \lspacegrad + \inv{v} {\stackrel{ \leftarrow }{\partial_t}} }
 }
 .
 \end{aligned}
 }
-%\end{dmath}
+\end{dmath}
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the STA formalism.
 
@@ -343,181 +323,176 @@ A potential representation can be obtained as before by considering electric and
 
 Without magnetic sources, Maxwell's equation splits into vector and trivector terms of the form
 
-\begin{subequations}
-\label{eqn:potentialMethods:360}
 \begin{dmath}\label{eqn:potentialMethods:380}
 \grad \cdot \bcF = \eta J
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:400}
 \grad \wedge \bcF = 0.
 \end{dmath}
-\end{subequations}
 
 A four-vector curl representation of the field will satisfy \cref{eqn:potentialMethods:400} allowing an immediate potential solution
 
-\boxedEquation{eqn:potentialMethods:560}{
+\begin{dmath}\label{eqn:potentialMethods:560}
+\boxed{
 \begin{aligned}
-&\bcF = \grad \wedge {A^\e} \\
-&\grad^2 {A^\e} - \grad \lr{ \grad \cdot {A^\e} } = \eta J.
+&\bcF = \grad \wedge {A^{\mathrm{e}}} \\
+&\grad^2 {A^{\mathrm{e}}} - \grad \lr{ \grad \cdot {A^{\mathrm{e}}} } = \eta J.
 \end{aligned}
 }
+\end{dmath}
 
 This can be put into correspondence with \cref{eqn:potentialMethods:120} by noting that
 
 \begin{dmath}\label{eqn:potentialMethods:460}
 \begin{aligned}
 \grad^2 &= (\gamma^\mu \partial_\mu) \cdot (\gamma^\nu \partial_\nu)  = \inv{v^2} \partial_{tt} - \spacegrad^2 \\
-\gamma_0 {A^\e} &= \gamma_0 \gamma^\mu {A^\e}_\mu = {A^\e}_0 + \Be_k {A^\e}_k = {A^\e}_0 + \BA^\e \\
+\gamma_0 {A^{\mathrm{e}}} &= \gamma_0 \gamma^\mu {A^{\mathrm{e}}}_\mu = {A^{\mathrm{e}}}_0 + \Be_k {A^{\mathrm{e}}}_k = {A^{\mathrm{e}}}_0 + \BA^{\mathrm{e}} \\
 \gamma_0 \grad &= \gamma_0 \gamma^\mu \partial_\mu = \inv{v} \partial_t + \spacegrad \\
-\grad \cdot {A^\e} &= \partial_\mu {A^\e}^\mu = \inv{v} \partial_t {A^\e}_0 - \spacegrad \cdot \BA^\e,
+\grad \cdot {A^{\mathrm{e}}} &= \partial_\mu {A^{\mathrm{e}}}^\mu = \inv{v} \partial_t {A^{\mathrm{e}}}_0 - \spacegrad \cdot \BA^{\mathrm{e}},
 \end{aligned}
 \end{dmath}
 
 so multiplying from the left with \( \gamma_0 \) gives
 
 \begin{dmath}\label{eqn:potentialMethods:480}
-\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \lr{ {A^\e}_0 + \BA^\e } - \lr{ \inv{v} \partial_t + \spacegrad }\lr{ \inv{v} \partial_t {A^\e}_0 - \spacegrad \cdot \BA^\e } = \eta( v q_e - \bcJ ),
+\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \lr{ {A^{\mathrm{e}}}_0 + \BA^{\mathrm{e}} } - \lr{ \inv{v} \partial_t + \spacegrad }\lr{ \inv{v} \partial_t {A^{\mathrm{e}}}_0 - \spacegrad \cdot \BA^{\mathrm{e}} } = \eta( v q_e - \bcJ ),
 \end{dmath}
 
 or
 
-\begin{subequations}
-\label{eqn:potentialMethods:500}
 \begin{dmath}\label{eqn:potentialMethods:520}
-\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \BA^\e - \spacegrad \lr{ \inv{v} \partial_t {A^\e}_0 - \spacegrad \cdot \BA^\e } = -\eta \bcJ
+\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \BA^{\mathrm{e}} - \spacegrad \lr{ \inv{v} \partial_t {A^{\mathrm{e}}}_0 - \spacegrad \cdot \BA^{\mathrm{e}} } = -\eta \bcJ
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:540}
-\spacegrad^2 {A^\e}_0 - \inv{v} \partial_t \lr{ \spacegrad \cdot \BA^\e } = -q_e/\epsilon.
+\spacegrad^2 {A^{\mathrm{e}}}_0 - \inv{v} \partial_t \lr{ \spacegrad \cdot \BA^{\mathrm{e}} } = -q_e/\epsilon.
 \end{dmath}
-\end{subequations}
 
-So \( {A^\e}_0 = \phi \) and \( -\ifrac{\BA^\e}{v} = \bcA^\e \), or
+So \( {A^{\mathrm{e}}}_0 = \phi \) and \( -\ifrac{\BA^{\mathrm{e}}}{v} = \bcA^{\mathrm{e}} \), or
 
-\boxedEquation{eqn:potentialMethods:600}{
-{A^\e} = \gamma_0\lr{ \phi - v \bcA^\e }.
+\begin{dmath}\label{eqn:potentialMethods:600}
+\boxed{
+{A^{\mathrm{e}}} = \gamma_0\lr{ \phi - v \bcA^{\mathrm{e}} }.
 }
+\end{dmath}
 
 \subsection{No electric sources}
 
 Without electric sources, Maxwell's equation now splits into
 
-\begin{subequations}
-\label{eqn:potentialMethods:620}
 \begin{dmath}\label{eqn:potentialMethods:640}
 \grad \cdot \bcF = 0
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:660}
 \grad \wedge \bcF = -I M.
 \end{dmath}
-\end{subequations}
 
 Here the dual of an STA curl yields a solution
 
-%\begin{dmath}\label{eqn:potentialMethods:680}
-\boxedEquation{eqn:potentialMethods:680}{
-\bcF = I ( \grad \wedge {A^\m} ).
+\begin{dmath}\label{eqn:potentialMethods:680}
+\boxed{
+\bcF = I ( \grad \wedge {A^{\mathrm{m}}} ).
 }
-%\end{dmath}
+\end{dmath}
 
 Substituting this gives
 
-\begin{subequations}
-\label{eqn:potentialMethods:700}
 \begin{dmath}\label{eqn:potentialMethods:720}
+\begin{aligned}
 0
-=
-\grad \cdot (I ( \grad \wedge {A^\m} ) )
-=
-\gpgradeone{ \grad I ( \grad \wedge {A^\m} ) }
-=
--I \grad \wedge ( \grad \wedge {A^\m} ).
+&=
+\grad \cdot (I ( \grad \wedge {A^{\mathrm{m}}} ) ) \\
+&=
+\gpgradeone{ \grad I ( \grad \wedge {A^{\mathrm{m}}} ) } \\
+&=
+-I \grad \wedge ( \grad \wedge {A^{\mathrm{m}}} ).
+\end{aligned}
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:740}
+\begin{aligned}
 -I M
-=
-\grad \wedge (I ( \grad \wedge {A^\m} ) )
-=
-\gpgradethree{ \grad I ( \grad \wedge {A^\m} ) }
-=
--I \grad \cdot ( \grad \wedge {A^\m} ).
+&=
+\grad \wedge (I ( \grad \wedge {A^{\mathrm{m}}} ) ) \\
+&=
+\gpgradethree{ \grad I ( \grad \wedge {A^{\mathrm{m}}} ) } \\
+&=
+-I \grad \cdot ( \grad \wedge {A^{\mathrm{m}}} ).
+\end{aligned}
 \end{dmath}
-\end{subequations}
 
 The \( \grad \cdot \bcF \) relation \cref{eqn:potentialMethods:720} is identically zero as desired, leaving
 
-%\begin{dmath}\label{eqn:potentialMethods:760}
-\boxedEquation{eqn:potentialMethods:760}{
-\grad^2 {A^\m} - \grad \lr{ \grad \cdot {A^\m} }
+\begin{dmath}\label{eqn:potentialMethods:760}
+\boxed{
+\grad^2 {A^{\mathrm{m}}} - \grad \lr{ \grad \cdot {A^{\mathrm{m}}} }
 =
 M.
 }
-%\end{dmath}
+\end{dmath}
 
 So the general solution with both electric and magnetic sources is
 
-%\begin{dmath}\label{eqn:potentialMethods:800}
-\boxedEquation{eqn:potentialMethods:800}{
-\bcF = \grad \wedge {A^\e} + I (\grad \wedge {A^\m}),
+\begin{dmath}\label{eqn:potentialMethods:800}
+\boxed{
+\bcF = \grad \wedge {A^{\mathrm{e}}} + I (\grad \wedge {A^{\mathrm{m}}}),
 }
-%\end{dmath}
+\end{dmath}
 
-subject to the constraints of \cref{eqn:potentialMethods:560} and \cref{eqn:potentialMethods:760}.  As before the four-potential \( {A^\m} \) can be put into correspondence with the conventional scalar and vector potentials by left multiplying with \( \gamma_0 \), which gives
+subject to the constraints of \cref{eqn:potentialMethods:560} and \cref{eqn:potentialMethods:760}.  As before the four-potential \( {A^{\mathrm{m}}} \) can be put into correspondence with the conventional scalar and vector potentials by left multiplying with \( \gamma_0 \), which gives
 
 \begin{dmath}\label{eqn:potentialMethods:820}
-\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \lr{ {A^\m}_0 + \BA^\m } - \lr{ \inv{v} \partial_t + \spacegrad }\lr{ \inv{v} \partial_t {A^\m}_0 - \spacegrad \cdot \BA^\m } = v q_m - \bcM,
+\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \lr{ {A^{\mathrm{m}}}_0 + \BA^{\mathrm{m}} } - \lr{ \inv{v} \partial_t + \spacegrad }\lr{ \inv{v} \partial_t {A^{\mathrm{m}}}_0 - \spacegrad \cdot \BA^{\mathrm{m}} } = v q_m - \bcM,
 \end{dmath}
 
 or
-\begin{subequations}
-\label{eqn:potentialMethods:840}
 \begin{dmath}\label{eqn:potentialMethods:860}
-\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \BA^\m - \spacegrad \lr{ \inv{v} \partial_t {A^\m}_0 - \spacegrad \cdot \BA^\m } = - \bcM
+\lr{ \inv{v^2} \partial_{tt} - \spacegrad^2 } \BA^{\mathrm{m}} - \spacegrad \lr{ \inv{v} \partial_t {A^{\mathrm{m}}}_0 - \spacegrad \cdot \BA^{\mathrm{m}} } = - \bcM
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:880}
-\spacegrad^2 {A^\m}_0 - \inv{v} \partial_t \spacegrad \cdot \BA^\m = -v q_m.
+\spacegrad^2 {A^{\mathrm{m}}}_0 - \inv{v} \partial_t \spacegrad \cdot \BA^{\mathrm{m}} = -v q_m.
 \end{dmath}
-\end{subequations}
 
-Comparing with \cref{eqn:potentialMethods:260} shows that \( {A^\m}_0/v = \mu \phi_m \) and \( -\ifrac{\BA^\m}{v^2} = \mu \bcA^\m \), or
+Comparing with \cref{eqn:potentialMethods:260} shows that \( {A^{\mathrm{m}}}_0/v = \mu \phi_m \) and \( -\ifrac{\BA^{\mathrm{m}}}{v^2} = \mu \bcA^{\mathrm{m}} \), or
 
-\boxedEquation{eqn:potentialMethods:900}{
-{A^\m} = \gamma_0 \eta \lr{ \phi_m - v \bcA^\m }.
+\begin{dmath}\label{eqn:potentialMethods:900}
+\boxed{
+{A^{\mathrm{m}}} = \gamma_0 \eta \lr{ \phi_m - v \bcA^{\mathrm{m}} }.
 }
+\end{dmath}
 
 \subsection{Potential operator structure}
 
 Observe that there is an underlying uniform structure of the differential operator that acts on the potential to produce the electromagnetic field.  Expressed as a linear operator of the
 gradient and the potentials, that is
 
-\( \bcF = L(\lrgrad, {A^\e}, {A^\m}) \)
+\( \bcF = L(\lrgrad, {A^{\mathrm{e}}}, {A^{\mathrm{m}}}) \)
 
 \begin{dmath}\label{eqn:potentialMethods:980}
+\begin{aligned}
 \bcF
-=
-L(\grad, {A^\e}, {A^\m})
-= \grad \wedge {A^\e} + I (\grad \wedge {A^\m})
-=
-\inv{2} \lr{ \rgrad {A^\e} - {A^\e} \lgrad }
-+ \frac{I}{2} \lr{ \rgrad {A^\m} - {A^\m} \lgrad }
-=
-\inv{2} \lr{ \rgrad {A^\e} - {A^\e} \lgrad }
-+ \frac{1}{2} \lr{ -\rgrad I {A^\m} - I {A^\m} \lgrad }
-=
-\inv{2} \lr{ \rgrad ({A^\e} -I {A^\m}) - ({A^\e} + I {A^\m}) \lgrad }
+&=
+L(\grad, {A^{\mathrm{e}}}, {A^{\mathrm{m}}}) \\
+&= \grad \wedge {A^{\mathrm{e}}} + I (\grad \wedge {A^{\mathrm{m}}}) \\
+&=
+\inv{2} \lr{ \rgrad {A^{\mathrm{e}}} - {A^{\mathrm{e}}} \lgrad }
++ \frac{I}{2} \lr{ \rgrad {A^{\mathrm{m}}} - {A^{\mathrm{m}}} \lgrad } \\
+&=
+\inv{2} \lr{ \rgrad {A^{\mathrm{e}}} - {A^{\mathrm{e}}} \lgrad }
++ \frac{1}{2} \lr{ -\rgrad I {A^{\mathrm{m}}} - I {A^{\mathrm{m}}} \lgrad } \\
+&=
+\inv{2} \lr{ \rgrad ({A^{\mathrm{e}}} -I {A^{\mathrm{m}}}) - ({A^{\mathrm{e}}} + I {A^{\mathrm{m}}}) \lgrad }
 ,
+\end{aligned}
 \end{dmath}
 
 or
-%\begin{dmath}\label{eqn:potentialMethods:1000}
-\boxedEquation{eqn:potentialMethods:1000}{
+\begin{dmath}\label{eqn:potentialMethods:1000}
+\boxed{
 \bcF
 =
-\inv{2} \lr{ \rgrad ({A^\e} -I {A^\m}) - ({A^\e} - I {A^\m})^\dagger \lgrad }
-%=
-%\inv{2} \lr{ \grad ({A^\e} -I {A^\m}) - (\grad ({A^\e} - I {A^\m}))^\dagger }
+\inv{2} \lr{ \rgrad ({A^{\mathrm{e}}} -I {A^{\mathrm{m}}}) - ({A^{\mathrm{e}}} - I {A^{\mathrm{m}}})^\dagger \lgrad }
 .
 }
-%\end{dmath}
+\end{dmath}
 
 Observe that \cref{eqn:potentialMethods:1000} can be
 put into correspondence with \cref{eqn:potentialMethods:1080} using a factoring of unity \( 1 = \gamma_0 \gamma_0 \)
@@ -525,99 +500,101 @@ put into correspondence with \cref{eqn:potentialMethods:1080} using a factoring 
 \begin{dmath}\label{eqn:potentialMethods:1100}
 \bcF
 =
-\inv{2} \lr{ (-\rgrad \gamma_0) (-\gamma_0 ({A^\e} -I {A^\m})) - (({A^\e} + I {A^\m}) \gamma_0)(\gamma_0 \lgrad) },
+\inv{2} \lr{ (-\rgrad \gamma_0) (-\gamma_0 ({A^{\mathrm{e}}} -I {A^{\mathrm{m}}})) - (({A^{\mathrm{e}}} + I {A^{\mathrm{m}}}) \gamma_0)(\gamma_0 \lgrad) },
 \end{dmath}
 
 where
 
-\begin{subequations}
-\label{eqn:potentialMethods:1120}
 \begin{dmath}\label{eqn:potentialMethods:1140}
+\begin{aligned}
 -\grad \gamma_0
-=
--(\gamma^0 \partial_0 + \gamma^k \partial_k) \gamma_0
-=
--\partial_0 - \gamma^k \gamma_0 \partial_k
-=
+&=
+-(\gamma^0 \partial_0 + \gamma^k \partial_k) \gamma_0 \\
+&=
+-\partial_0 - \gamma^k \gamma_0 \partial_k \\
+&=
 \spacegrad
 -\inv{v} \partial_t
 ,
+\end{aligned}
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:1160}
+\begin{aligned}
 \gamma_0 \grad
-=
-\gamma_0 (\gamma^0 \partial_0 + \gamma^k \partial_k)
-=
-\partial_0 - \gamma^k \gamma_0 \partial_k
-=
+&=
+\gamma_0 (\gamma^0 \partial_0 + \gamma^k \partial_k) \\
+&=
+\partial_0 - \gamma^k \gamma_0 \partial_k \\
+&=
 \spacegrad
 + \inv{v} \partial_t
 ,
+\end{aligned}
 \end{dmath}
-\end{subequations}
 
 and
-\begin{subequations}
-\label{eqn:potentialMethods:1180}
 \begin{dmath}\label{eqn:potentialMethods:1200}
--\gamma_0 ( {A^\e} - I {A^\m} )
-=
--\gamma_0 \gamma_0 \lr{ \phi -v \bcA^\e + \eta I \lr{ \phi_m - v \bcA^\m } }
-=
--\lr{ \phi -v \bcA^\e + \eta I \phi_m - \eta v I \bcA^\m }
-=
+\begin{aligned}
+-\gamma_0 ( {A^{\mathrm{e}}} - I {A^{\mathrm{m}}} )
+&=
+-\gamma_0 \gamma_0 \lr{ \phi -v \bcA^{\mathrm{e}} + \eta I \lr{ \phi_m - v \bcA^{\mathrm{m}} } } \\
+&=
+-\lr{ \phi -v \bcA^{\mathrm{e}} + \eta I \phi_m - \eta v I \bcA^{\mathrm{m}} } \\
+&=
 - \phi
-+ v \bcA^\e
-+ \eta v I \bcA^\m
++ v \bcA^{\mathrm{e}}
++ \eta v I \bcA^{\mathrm{m}}
 - \eta I \phi_m
+\end{aligned}
 \end{dmath}
 \begin{dmath}\label{eqn:potentialMethods:1220}
-( {A^\e} + I {A^\m} )\gamma_0
-=
-\lr{ \gamma_0 \lr{ \phi -v \bcA^\e } + I \gamma_0 \eta \lr{ \phi_m - v \bcA^\m } } \gamma_0
-=
-\phi + v \bcA^\e + I \eta \phi_m + I \eta v \bcA^\m
-=
+\begin{aligned}
+( {A^{\mathrm{e}}} + I {A^{\mathrm{m}}} )\gamma_0
+&=
+\lr{ \gamma_0 \lr{ \phi -v \bcA^{\mathrm{e}} } + I \gamma_0 \eta \lr{ \phi_m - v \bcA^{\mathrm{m}} } } \gamma_0 \\
+&=
+\phi + v \bcA^{\mathrm{e}} + I \eta \phi_m + I \eta v \bcA^{\mathrm{m}} \\
+&=
 \phi
-+ v \bcA^\e
-+ \eta v I \bcA^\m
++ v \bcA^{\mathrm{e}}
++ \eta v I \bcA^{\mathrm{m}}
 + \eta I \phi_m
 ,
+\end{aligned}
 \end{dmath}
-\end{subequations}
 
 This recovers \cref{eqn:potentialMethods:1080} as desired.
 
 \section{Potentials in the 3D Euclidean formalism}
 
-In the conventional scalar plus vector differential representation of Maxwell's equations \cref{eqn:chapter3Notes:19}, given electric(magnetic) sources the structure of the electric(magnetic) potential follows from first setting the magnetic(electric) field equal to the curl of a vector potential.  The procedure for the STA GA form of Maxwell's equation was similar, where it was immediately evident that the field could be set to the four-curl of a four-vector potential (or the dual of such a curl for magnetic sources).
+In the conventional scalar plus vector differential representation of Maxwell's equations \cref{eqn:chapter3Notes:20}..., given electric(magnetic) sources the structure of the electric(magnetic) potential follows from first setting the magnetic(electric) field equal to the curl of a vector potential.  The procedure for the STA GA form of Maxwell's equation was similar, where it was immediately evident that the field could be set to the four-curl of a four-vector potential (or the dual of such a curl for magnetic sources).
 
-In the 3D GA representation, there is no immediate rationale for introducing a curl or the equivalent to a four-curl representation of the field.  Reconciliation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( {A^\e} - I {A^\m} \), and that this can in fact be written as
+In the 3D GA representation, there is no immediate rationale for introducing a curl or the equivalent to a four-curl representation of the field.  Reconciliation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( {A^{\mathrm{e}}} - I {A^{\mathrm{m}}} \), and that this can in fact be written as
 a single sided gradient operation on a potential, provided the multivector product is filtered with a four-bivector grade selection operation
 
-%\begin{dmath}\label{eqn:potentialMethods:1240}
-\boxedEquation{eqn:potentialMethods:1240}{
-\bcF = \gpgradetwo{ \grad \lr{ {A^\e} - I {A^\m} } }.
+\begin{dmath}\label{eqn:potentialMethods:1240}
+\boxed{
+\bcF = \gpgradetwo{ \grad \lr{ {A^{\mathrm{e}}} - I {A^{\mathrm{m}}} } }.
 }
-%\end{dmath}
+\end{dmath}
 
 Similarly, it can be observed that the
 specific function of the conjugate structure in the two sided potential representation of
 \cref{eqn:potentialMethods:1080}
 is to discard all the scalar and pseudoscalar grades in the multivector product.  This means that a single sided potential can also be used, provided it is wrapped in a grade selection operation
 
-%\begin{dmath}\label{eqn:potentialMethods:1260}
-\boxedEquation{eqn:potentialMethods:1260}{
+\begin{dmath}\label{eqn:potentialMethods:1260}
+\boxed{
 \bcF =
 \gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} }
    \lr{
       - \phi
-      + v \bcA^\e
-      + \eta I v \bcA^\m
+      + v \bcA^{\mathrm{e}}
+      + \eta I v \bcA^{\mathrm{m}}
       - \eta I \phi_m
    } }{1,2}.
 }
-%\end{dmath}
+\end{dmath}
 
 It is this grade selection operation that is really the fundamental defining action in the potential of the STA and conventional 3D representations of Maxwell's equations.  So, given Maxwell's equation in the 3D GA representation, defining a potential representation for the field is really just a demand that the field have the structure
 
@@ -630,16 +607,18 @@ This is a mandate that the electromagnetic field is the grades 1 and 2 component
 Expanding \cref{eqn:potentialMethods:1320} gives
 
 \begin{dmath}\label{eqn:potentialMethods:1340}
+\begin{aligned}
 \bcF
-=
+&=
 \spacegrad A_0
 + \beta \partial_t A_1
 - \spacegrad \cross A_1'
 + I (\spacegrad \cross A_1
 + \beta \partial_t A_1'
-+ \spacegrad A_0')
-=
++ \spacegrad A_0') \\
+&=
 \bcE + I \eta \bcH.
+\end{aligned}
 \end{dmath}
 
 This naturally has all the right mixes of curls, gradients and time derivatives, all following as direct consequences of applying a grade selection operation to the action of a ``spacetime gradient'' on a general multivector potential.
@@ -651,7 +630,7 @@ The conclusion is that the potential representation of the field is
 \gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2},
 \end{dmath}
 
-where \( A \) is a multivector potentially containing all grades, where grades 0,1 are required for electric sources, and grades 2,3 are required for magnetic sources.  When it is desirable to refer back to the conventional scalar and vector potentials this multivector potential can be written as \( A = -\phi + v \bcA^\e + \eta I \lr{ -\phi_m + v \bcA^\m } \).
+where \( A \) is a multivector potentially containing all grades, where grades 0,1 are required for electric sources, and grades 2,3 are required for magnetic sources.  When it is desirable to refer back to the conventional scalar and vector potentials this multivector potential can be written as \( A = -\phi + v \bcA^{\mathrm{e}} + \eta I \lr{ -\phi_m + v \bcA^{\mathrm{m}} } \).
 
 \section{Gauge transformations}
 
@@ -665,18 +644,22 @@ so adding the gradient of any scalar field to the potential \( \bcA' = \bcA + \s
 does not change the magnetic field
 
 \begin{dmath}\label{eqn:potentialMethods:1400}
+\begin{aligned}
 \bcB'
-= \spacegrad \cross \lr{ \bcA + \spacegrad \psi }
-= \spacegrad \cross \bcA
-= \bcB.
+&= \spacegrad \cross \lr{ \bcA + \spacegrad \psi } \\
+&= \spacegrad \cross \bcA \\
+&= \bcB.
+\end{aligned}
 \end{dmath}
 
 The electric field with this changed potential is
 
 \begin{dmath}\label{eqn:potentialMethods:1420}
+\begin{aligned}
 \bcE'
-= -\spacegrad \phi - \partial_t \lr{ \BA + \spacegrad \psi}
-= -\spacegrad \lr{ \phi + \partial_t \psi } - \partial_t \BA,
+&= -\spacegrad \phi - \partial_t \lr{ \BA + \spacegrad \psi} \\
+&= -\spacegrad \lr{ \phi + \partial_t \psi } - \partial_t \BA,
+\end{aligned}
 \end{dmath}
 
 so if
@@ -722,13 +705,15 @@ A \rightarrow A + \lr{ \spacegrad + \inv{v} \partial_t } \psi,
 where \( \psi \) is any field that has scalar or pseudoscalar grades.  Viewed in terms of grade selection, this makes perfect sense, since the transformed field is
 
 \begin{dmath}\label{eqn:potentialMethods:1560}
+\begin{aligned}
 \bcF
-\rightarrow
-\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ A + \lr{ \spacegrad + \inv{v} \partial_t } \psi } }{1,2}
-=
-\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A + \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi }{1,2}
-=
+&\rightarrow
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ A + \lr{ \spacegrad + \inv{v} \partial_t } \psi } }{1,2} \\
+&=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A + \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi }{1,2} \\
+&=
 \gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2}.
+\end{aligned}
 \end{dmath}
 
 The \( \psi \) contribution to the grade selection operator is killed because it has scalar or pseudoscalar grades.
@@ -738,11 +723,13 @@ The \( \psi \) contribution to the grade selection operator is killed because it
 Maxwell's equations are completely decoupled if the potential can be found such that
 
 \begin{dmath}\label{eqn:potentialMethods:1580}
+\begin{aligned}
 \bcF
-=
-\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2}
-=
+&=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2} \\
+&=
 \lr{ \spacegrad - \inv{v} \PD{t}{} } A.
+\end{aligned}
 \end{dmath}
 
 When this is the case, Maxwell's equations are reduced to four non-homogeneous potential wave equations
@@ -756,9 +743,9 @@ that is
 \begin{dmath}\label{eqn:potentialMethods:1600}
 \begin{aligned}
 \lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi &= - \inv{\epsilon} q_e \\
-\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\e &= - \mu \bcJ \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^{\mathrm{e}} &= - \mu \bcJ \\
 \lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi_m &= - \frac{I}{\mu} q_m \\
-\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\m &= - I \epsilon \bcM.
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^{\mathrm{m}} &= - I \epsilon \bcM.
 \end{aligned}
 \end{dmath}
 
@@ -768,18 +755,18 @@ There should be no a-priori assumption that such a field representation has no s
 \begin{aligned}
 \lr{ \spacegrad - \inv{v} \PD{t}{} } A
 &=
-\lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ -\phi + v \bcA^\e + \eta I \lr{ -\phi_m + v \bcA^\m } } \\
+\lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ -\phi + v \bcA^{\mathrm{e}} + \eta I \lr{ -\phi_m + v \bcA^{\mathrm{m}} } } \\
 &=
 \inv{v} \partial_t \phi
-+ v \spacegrad \cdot \bcA^\e  \\
++ v \spacegrad \cdot \bcA^{\mathrm{e}}  \\
 &-\spacegrad \phi
-+ I \eta v \spacegrad \wedge \bcA^\m
-- \partial_t \bcA^\e  \\
-&+ v \spacegrad \wedge \bcA^\e
++ I \eta v \spacegrad \wedge \bcA^{\mathrm{m}}
+- \partial_t \bcA^{\mathrm{e}}  \\
+&+ v \spacegrad \wedge \bcA^{\mathrm{e}}
 - \eta I \spacegrad \phi_m
-- I \eta \partial_t \bcA^\m \\
+- I \eta \partial_t \bcA^{\mathrm{m}} \\
 &+ \eta I \inv{v} \partial_t \phi_m
-+ I \eta v \spacegrad \cdot \bcA^\m,
++ I \eta v \spacegrad \cdot \bcA^{\mathrm{m}},
 \end{aligned}
 \end{dmath}
 
@@ -787,8 +774,8 @@ so if this potential representation has only vector and bivector grades, it must
 
 \begin{dmath}\label{eqn:potentialMethods:1660}
 \begin{aligned}
-\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e &= 0 \\
-\inv{v} \partial_t \phi_m + v \spacegrad \cdot \bcA^\m &= 0.
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^{\mathrm{e}} &= 0 \\
+\inv{v} \partial_t \phi_m + v \spacegrad \cdot \bcA^{\mathrm{m}} &= 0.
 \end{aligned}
 \end{dmath}
 
@@ -797,18 +784,21 @@ The first is the well known Lorenz gauge condition, whereas the second is the du
 Should one of these conditions, say the Lorenz condition for the electric source potentials, be non-zero, then it is possible to make a potential transformation for which this condition is zero
 
 \begin{dmath}\label{eqn:potentialMethods:1680}
-0 \ne
-\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
-=
-\inv{v} \partial_t (\phi' - \partial_t \psi) + v \spacegrad \cdot (\bcA' + \spacegrad \psi)
-=
+\begin{aligned}
+0 
+&\ne
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^{\mathrm{e}} \\
+&=
+\inv{v} \partial_t (\phi' - \partial_t \psi) + v \spacegrad \cdot (\bcA' + \spacegrad \psi) \\
+&=
 \inv{v} \partial_t \phi' + v \spacegrad \bcA'
 + v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi,
+\end{aligned}
 \end{dmath}
 
 so if \( \inv{v} \partial_t \phi' + v \spacegrad \bcA' \) is zero, \( \psi \) must be found such that
 \begin{dmath}\label{eqn:potentialMethods:1700}
-\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^{\mathrm{e}}
 = v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi.
 \end{dmath}
 

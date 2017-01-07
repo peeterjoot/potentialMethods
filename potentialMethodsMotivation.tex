@@ -1,0 +1,64 @@
+%
+% Copyright © 2017 Peeter Joot.  All Rights Reserved.
+% Licenced as described in the file LICENSE under the root directory of this GIT repository.
+%
+
+Geometric algebra (GA) allows for a compact description of Maxwell's equations in either an explicit 3D representation or a STA (SpaceTime Algebra
+\citep{doran2003gap}
+) representation.  The 3D GA and
+STA
+representations Maxwell's equation both the form
+
+\begin{dmath}\label{eqn:potentialMethods:1280}
+L \bcF = J,
+\end{dmath}
+
+where \( J \) represents the sources,
+\( L \) is a multivector gradient operator that includes partial derivative operator components for each of the space and time coordinates, and
+
+\begin{dmath}\label{eqn:potentialMethods:1020}
+\bcF = \bcE + \eta I \bcH,
+\end{dmath}
+
+is an electromagnetic field multivector, \( I = \Be_1 \Be_2 \Be_3 \) is the \R{3} pseudoscalar, and \( \eta = \sqrt{\mu/\epsilon} \) is the impedance of the media.
+
+When Maxwell's equations are extended to include magnetic sources in addition to conventional electric sources (as used in antenna-theory \citep{balanis2005antenna} and microwave engineering \citep{pozar2009microwave}), they take the form
+
+\input{../ece1229-antenna/MaxwellsStatement.tex}
+
+The corresponding GA Maxwell equations in their respective 3D and STA forms are
+
+\begin{subequations}
+\label{eqn:potentialMethods:1300}
+\begin{dmath}\label{eqn:potentialMethods:300}
+\lr{ \spacegrad + \inv{v} \PD{t}{} } \bcF
+=
+%\inv{\epsilon v}
+\eta
+\lr{ v q_\txte - \bcJ }
++ I \lr{ v q_\txtm - \bcM }
+\end{dmath}
+\begin{dmath}\label{eqn:potentialMethods:320}
+\grad \bcF = \eta J - I M,
+\end{dmath}
+\end{subequations}
+
+where the wave group velocity in the medium is \( v = 1/\sqrt{\epsilon\mu} \), and the medium is isotropic with
+\( \bcB = \mu \bcH \), and \( \bcD = \epsilon \bcE \).  In the STA representation, \( \grad, J, M \) are all four-vectors, the specific meanings of which will be spelled out below.
+
+How to determine the potential equations and the field representation using the conventional distinct Maxwell's \cref{eqn:chapter3Notes:19} is well known.  The basic procedure is to consider the electric and magnetic sources in turn, and observe that in each case one of the electric or magnetic fields must have a curl representation.  The STA approach is similar, except that it can be observed that the field must have a four-curl representation for each type of source.  In the explicit 3D GA formalism
+\cref{eqn:potentialMethods:300} how to formulate a natural potential representation is not as obvious.  There is no longer an reason to set any component of the field equal to a curl, and the representation of the four curl from the STA approach is awkward.  Additionally, it is not obvious what form gauge invariance takes in the 3D GA representation.
+
+%\paragraph{New ideas (or believed to be) in this paper}
+\paragraph{Ideas explored in these notes}
+
+\begin{itemize}
+\item GA representation of Maxwell's equations including magnetic sources.
+\item STA GA formalism for Maxwell's equations including magnetic sources.
+\item Explicit form of the GA potential representation including both electric and magnetic sources.
+\item Demonstration of exactly how the 3D and STA potentials are related.
+\item Explore the structure of gauge transformations when magnetic sources are included.
+\item Explore the structure of gauge transformations in the 3D GA formalism.
+\item Specify the form of the Lorentz gauge in the 3D GA formalism.
+\end{itemize}
+

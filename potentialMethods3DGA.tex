@@ -1,0 +1,226 @@
+%
+% Copyright © 2017 Peeter Joot.  All Rights Reserved.
+% Licenced as described in the file LICENSE under the root directory of this GIT repository.
+%
+
+In the conventional scalar plus vector differential representation of Maxwell's equations \cref{eqn:chapter3Notes:19}, given electric(magnetic) sources the structure of the electric(magnetic) potential follows from first setting the magnetic(electric) field equal to the curl of a vector potential.  The procedure for the STA GA form of Maxwell's equation was similar, where it was immediately evident that the field could be set to the four-curl of a four-vector potential (or the dual of such a curl for magnetic sources).
+
+In the 3D GA representation, there is no immediate rationale for introducing a curl or the equivalent to a four-curl representation of the field.  Reconciliation of this is possible by recognizing that the fact that the field (or a component of it) may be represented by a curl is not actually fundamental.  Instead, observe that the two sided gradient action on a potential to generate the electromagnetic field in the STA representation of \cref{eqn:potentialMethods:1000} serves to select the grade two component product of the gradient and the multivector potential \( {A^\e} - I {A^\m} \), and that this can in fact be written as
+a single sided gradient operation on a potential, provided the multivector product is filtered with a four-bivector grade selection operation
+
+%\begin{dmath}\label{eqn:potentialMethods:1240}
+\boxedEquation{eqn:potentialMethods:1240}{
+\bcF = \gpgradetwo{ \grad \lr{ {A^\e} - I {A^\m} } }.
+}
+%\end{dmath}
+
+Similarly, it can be observed that the
+specific function of the conjugate structure in the two sided potential representation of
+\cref{eqn:potentialMethods:1080}
+is to discard all the scalar and pseudoscalar grades in the multivector product.  This means that a single sided potential can also be used, provided it is wrapped in a grade selection operation
+
+%\begin{dmath}\label{eqn:potentialMethods:1260}
+\boxedEquation{eqn:potentialMethods:1260}{
+\bcF =
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} }
+   \lr{
+      - \phi
+      + v \bcA^\e
+      + \eta I v \bcA^\m
+      - \eta I \phi_m
+   } }{1,2}.
+}
+%\end{dmath}
+
+It is this grade selection operation that is really the fundamental defining action in the potential of the STA and conventional 3D representations of Maxwell's equations.  So, given Maxwell's equation in the 3D GA representation, defining a potential representation for the field is really just a demand that the field have the structure
+
+\begin{dmath}\label{eqn:potentialMethods:1320}
+\bcF = \gpgrade{ (\alpha \spacegrad + \beta \partial_t)( A_0 + A_1 + I( A_0' + A_1' ) }{1,2}.
+\end{dmath}
+
+This is a mandate that the electromagnetic field is the grades 1 and 2 components of the vector product of space and time derivative operators on a multivector field \( A = \sum_{k=0}^3 A_k = A_0 + A_1 + I( A_0' + A_1' ) \) that can potentially have any grade components.  There are more degrees of freedom in this specification than required, since the multivector can absorb one of the \( \alpha \) or \( \beta \) coefficients, so without loss of generality, one of these (say \( \alpha\)) can be set to 1.
+
+Expanding \cref{eqn:potentialMethods:1320} gives
+
+\begin{dmath}\label{eqn:potentialMethods:1340}
+\bcF
+=
+\spacegrad A_0
++ \beta \partial_t A_1
+- \spacegrad \cross A_1'
++ I (\spacegrad \cross A_1
++ \beta \partial_t A_1'
++ \spacegrad A_0')
+=
+\bcE + I \eta \bcH.
+\end{dmath}
+
+This naturally has all the right mixes of curls, gradients and time derivatives, all following as direct consequences of applying a grade selection operation to the action of a ``spacetime gradient'' on a general multivector potential.
+
+The conclusion is that the potential representation of the field is
+
+\begin{dmath}\label{eqn:potentialMethods:1360}
+\bcF =
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2},
+\end{dmath}
+
+where \( A \) is a multivector potentially containing all grades, where grades 0,1 are required for electric sources, and grades 2,3 are required for magnetic sources.  When it is desirable to refer back to the conventional scalar and vector potentials this multivector potential can be written as \( A = -\phi + v \bcA^\e + \eta I \lr{ -\phi_m + v \bcA^\m } \).
+
+\subsection{Gauge transformations}
+
+Recall that for electric sources the magnetic field is of the form
+
+\begin{dmath}\label{eqn:potentialMethods:1380}
+\bcB = \spacegrad \cross \bcA,
+\end{dmath}
+
+so adding the gradient of any scalar field to the potential \( \bcA' = \bcA + \spacegrad \psi \)
+does not change the magnetic field
+
+\begin{dmath}\label{eqn:potentialMethods:1400}
+\bcB'
+= \spacegrad \cross \lr{ \bcA + \spacegrad \psi }
+= \spacegrad \cross \bcA
+= \bcB.
+\end{dmath}
+
+The electric field with this changed potential is
+
+\begin{dmath}\label{eqn:potentialMethods:1420}
+\bcE'
+= -\spacegrad \phi - \partial_t \lr{ \BA + \spacegrad \psi}
+= -\spacegrad \lr{ \phi + \partial_t \psi } - \partial_t \BA,
+\end{dmath}
+
+so if
+\begin{dmath}\label{eqn:potentialMethods:1440}
+\phi = \phi' - \partial_t \psi,
+\end{dmath}
+
+the electric field will also be unaltered by this transformation.
+
+In the STA representation, the field can similarly be altered by adding any (four)gradient to the potential.  For example with only electric sources
+
+\begin{dmath}\label{eqn:potentialMethods:1460}
+\bcF = \grad \wedge (A + \grad \psi) = \grad \wedge A
+\end{dmath}
+
+and for electric or magnetic sources
+
+\begin{dmath}\label{eqn:potentialMethods:1480}
+\bcF = \gpgradetwo{ \grad (A + \grad \psi) } = \gpgradetwo{ \grad A }.
+\end{dmath}
+
+In the 3D GA representation, where the field is given by \cref{eqn:potentialMethods:1360}, there is no field that is being curled to add a gradient to.  However, if the scalar and vector potentials transform as
+
+\begin{dmath}\label{eqn:potentialMethods:1500}
+\begin{aligned}
+\bcA &\rightarrow \bcA + \spacegrad \psi \\
+\phi &\rightarrow \phi - \partial_t \psi,
+\end{aligned}
+\end{dmath}
+
+then the multivector potential transforms as
+\begin{dmath}\label{eqn:potentialMethods:1520}
+-\phi + v \bcA
+\rightarrow -\phi + v \bcA + \partial_t \psi + v \spacegrad \psi,
+\end{dmath}
+
+so the electromagnetic field is unchanged when the multivector potential is transformed as
+
+\begin{dmath}\label{eqn:potentialMethods:1540}
+A \rightarrow A + \lr{ \spacegrad + \inv{v} \partial_t } \psi,
+\end{dmath}
+
+where \( \psi \) is any field that has scalar or pseudoscalar grades.  Viewed in terms of grade selection, this makes perfect sense, since the transformed field is
+
+\begin{dmath}\label{eqn:potentialMethods:1560}
+\bcF
+\rightarrow
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ A + \lr{ \spacegrad + \inv{v} \partial_t } \psi } }{1,2}
+=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A + \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi }{1,2}
+=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2}.
+\end{dmath}
+
+The \( \psi \) contribution to the grade selection operator is killed because it has scalar or pseudoscalar grades.
+
+\subsection{Lorenz gauge}
+
+Maxwell's equations are completely decoupled if the potential can be found such that
+
+\begin{dmath}\label{eqn:potentialMethods:1580}
+\bcF
+=
+\gpgrade{ \lr{ \spacegrad - \inv{v} \PD{t}{} } A }{1,2}
+=
+\lr{ \spacegrad - \inv{v} \PD{t}{} } A.
+\end{dmath}
+
+When this is the case, Maxwell's equations are reduced to four non-homogeneous potential wave equations
+
+\begin{dmath}\label{eqn:potentialMethods:1620}
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } A = J,
+\end{dmath}
+
+that is
+
+\begin{dmath}\label{eqn:potentialMethods:1600}
+\begin{aligned}
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi &= - \inv{\epsilon} q_e \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\e &= - \mu \bcJ \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \phi_m &= - \frac{I}{\mu} q_m \\
+\lr{ \spacegrad^2 - \inv{v^2} \PDSq{t}{} } \bcA^\m &= - I \epsilon \bcM.
+\end{aligned}
+\end{dmath}
+
+There should be no a-priori assumption that such a field representation has no scalar, nor no pseudoscalar components.  That explicit expansion in grades is
+
+\begin{dmath}\label{eqn:potentialMethods:1640}
+\begin{aligned}
+\lr{ \spacegrad - \inv{v} \PD{t}{} } A
+&=
+\lr{ \spacegrad - \inv{v} \PD{t}{} } \lr{ -\phi + v \bcA^\e + \eta I \lr{ -\phi_m + v \bcA^\m } } \\
+&=
+\inv{v} \partial_t \phi
++ v \spacegrad \cdot \bcA^\e  \\
+&-\spacegrad \phi
++ I \eta v \spacegrad \wedge \bcA^\m
+- \partial_t \bcA^\e  \\
+&+ v \spacegrad \wedge \bcA^\e
+- \eta I \spacegrad \phi_m
+- I \eta \partial_t \bcA^\m \\
+&+ \eta I \inv{v} \partial_t \phi_m
++ I \eta v \spacegrad \cdot \bcA^\m,
+\end{aligned}
+\end{dmath}
+
+so if this potential representation has only vector and bivector grades, it must be true that
+
+\begin{dmath}\label{eqn:potentialMethods:1660}
+\begin{aligned}
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e &= 0 \\
+\inv{v} \partial_t \phi_m + v \spacegrad \cdot \bcA^\m &= 0.
+\end{aligned}
+\end{dmath}
+
+The first is the well known Lorenz gauge condition, whereas the second is the dual of that condition for magnetic sources.
+
+Should one of these conditions, say the Lorenz condition for the electric source potentials, be non-zero, then it is possible to make a potential transformation for which this condition is zero
+
+\begin{dmath}\label{eqn:potentialMethods:1680}
+0 \ne
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
+=
+\inv{v} \partial_t (\phi' - \partial_t \psi) + v \spacegrad \cdot (\bcA' + \spacegrad \psi)
+=
+\inv{v} \partial_t \phi' + v \spacegrad \bcA'
++ v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi,
+\end{dmath}
+
+so if \( \inv{v} \partial_t \phi' + v \spacegrad \bcA' \) is zero, \( \psi \) must be found such that
+\begin{dmath}\label{eqn:potentialMethods:1700}
+\inv{v} \partial_t \phi + v \spacegrad \cdot \bcA^\e
+= v \lr{ \spacegrad^2 - \inv{v^2} \partial_{tt} } \psi.
+\end{dmath}

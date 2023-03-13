@@ -38,9 +38,9 @@ three multivector rotation operators are required to make a change of basis tran
 
 Here \( B_k \) is a bivector for which the orientation is the plane of rotation between \( \Be_k \) and \( \Bf_k \)
 
-\begin{dmath}\label{eqn:rotation:40}
+\begin{equation}\label{eqn:rotation:40}
 \hat{B}_k = \frac{B_k}{\Abs{B_k}} = \frac{\Be_k \wedge \Bf_k}{\Abs{\Be_k \wedge \Bf_k}},
-\end{dmath}
+\end{equation}
 
 and has the magnitude \( \Abs{B_k} = \theta_k \), the rotation angle between \( \Be_k \) and \( \Bf_k \).
 
@@ -52,31 +52,34 @@ If the coordinate representation in the two bases is given by
 
 then the coordinates can be related by the same transformation.  That is
 
-\begin{dmath}\label{eqn:rotation:80}
+\begin{equation}\label{eqn:rotation:80}
+\begin{aligned}
 y_i
-= \Bx \cdot \Bf_i
-= \gpgradezero{
+&= \Bx \cdot \Bf_i \\
+&= \gpgradezero{
 \lr{ \sum_j x_j \Be_j } \Bf_i
-}
-=
+} \\
+&=
 \sum_j x_j
 \gpgradezero
 {
 \Be_j \Be_i e^{B_j}
-}
-=
-\sum_j x_j \lr{ (\Be_j \cdot \Be_i) \cosh(B_j) + (\Be_j \wedge \Be_i) \cdot \sinh(B_j) }
-=
+} \\
+&=
+\sum_j x_j \lr{ (\Be_j \cdot \Be_i) \cosh(B_j) + (\Be_j \wedge \Be_i) \cdot \sinh(B_j) } \\
+&=
 \sum_j x_j \lr{ (\Be_j \cdot \Be_i) \cos(\theta_j) + ((\Be_j \wedge \Be_i) \cdot \hat{B}_j) \sin(\theta_j) },
-\end{dmath}
+\end{aligned}
+\end{equation}
 
 If desired the explicit expansion of the
 bivector dot product factor of the sine is
 
-\begin{dmath}\label{eqn:rotation:100}
+\begin{equation}\label{eqn:rotation:100}
+\begin{aligned}
 (\Be_j \wedge \Be_i) \cdot \hat{B}_j
-=
-(\Be_j \wedge \Be_i) \cdot \frac{\Be_j \wedge \Bf_j}{\sqrt{-(\Be_j \wedge \Bf_j) \cdot (\Be_j \wedge \Bf_j)}}
+&=
+(\Be_j \wedge \Be_i) \cdot \frac{\Be_j \wedge \Bf_j}{\sqrt{-(\Be_j \wedge \Bf_j) \cdot (\Be_j \wedge \Bf_j)}} \\
 =
 \frac{
    (\Be_j \cdot \Bf_j)(\Be_i \cdot \Be_j)
@@ -88,22 +91,19 @@ bivector dot product factor of the sine is
 -(\Bf_j \cdot \Be_j)(\Be_j \cdot \Bf_j)
 }
 }.
-\end{dmath}
+\end{aligned}
+\end{equation}
 
 The change of basis can be expressed as a rotation matrix with coordinates \( R_{ij} \) given by
-
-\begin{dmath}\label{eqn:rotation:120}
+\begin{equation}\label{eqn:rotation:120}
 R_{ij}
 =
 (\Be_j \cdot \Be_i) \cos(\theta_j) + ((\Be_j \wedge \Be_i) \cdot \hat{B}_j) \sin(\theta_j),
-\end{dmath}
-
+\end{equation}
 where the coordinate transformation is
-
-\begin{dmath}\label{eqn:rotation:140}
+\begin{equation}\label{eqn:rotation:140}
 y_i = R_{ij} x_j.
-\end{dmath}
-
+\end{equation}
 %}
 %\EndArticle
 \EndNoBibArticle

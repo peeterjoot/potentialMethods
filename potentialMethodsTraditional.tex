@@ -7,42 +7,42 @@
 
 When magnetic sources are omitted, it follows from \cref{eqn:chapter3Notes:80} that there is some \( \bcA^\e \) for which
 
-%\begin{dmath}\label{eqn:potentialMethods:20}
+%\begin{equation}\label{eqn:potentialMethods:20}
 \boxedEquation{eqn:potentialMethods:20}{
 \bcB = \spacegrad \cross \bcA^\e,
 }
-%\end{dmath}
+%\end{equation}
 
 Substitution into Faraday's law \cref{eqn:chapter3Notes:20} gives
 
-\begin{dmath}\label{eqn:potentialMethods:40}
+\begin{equation}\label{eqn:potentialMethods:40}
 \spacegrad \cross \bcE = - \PD{t}{}\lr{ \spacegrad \cross \bcA^\e },
-\end{dmath}
+\end{equation}
 
 or
-\begin{dmath}\label{eqn:potentialMethods:60}
+\begin{equation}\label{eqn:potentialMethods:60}
 \spacegrad \cross \lr{ \bcE + \PD{t}{ \bcA^\e } } = 0.
-\end{dmath}
+\end{equation}
 
 A gradient representation of this curled quantity, say \( -\spacegrad \phi \), will provide the required zero
 
-%\begin{dmath}\label{eqn:potentialMethods:80}
+%\begin{equation}\label{eqn:potentialMethods:80}
 \boxedEquation{eqn:potentialMethods:80}{
 \bcE = -\spacegrad \phi -\PD{t}{ \bcA^\e }.
 }
-%\end{dmath}
+%\end{equation}
 
 The final two Maxwell equations yield
 
-\begin{dmath}\label{eqn:potentialMethods:100}
+\begin{equation}\label{eqn:potentialMethods:100}
 \begin{aligned}
 -\spacegrad^2 \bcA^\e + \spacegrad \lr{ \spacegrad \cdot \bcA^\e } &= \mu \lr{ \bcJ + \epsilon \PD{t}{} \lr{ -\spacegrad \phi -\PD{t}{ \bcA^\e } } } \\
 \spacegrad \cdot \lr{ -\spacegrad \phi -\PD{t}{ \bcA^\e } } &= q_e/\epsilon,
 \end{aligned}
-\end{dmath}
+\end{equation}
 
 or
-%\begin{dmath}\label{eqn:potentialMethods:120}
+%\begin{equation}\label{eqn:potentialMethods:120}
 \boxedEquation{eqn:potentialMethods:120}{
 \begin{aligned}
 \spacegrad^2 \bcA^\e - \inv{v^2} \PDSq{t}{ \bcA^\e }
@@ -54,7 +54,7 @@ or
 \spacegrad^2 \phi + \PD{t}{} \lr{ \spacegrad \cdot \bcA^\e } &= -q_e/\epsilon.
 \end{aligned}
 }
-%\end{dmath}
+%\end{equation}
 
 Note that the Lorentz condition \( \PDi{t}{(\phi/v^2)} + \spacegrad \cdot \bcA^\e = 0 \) can be imposed to decouple these, leaving non-homogeneous wave equations for the vector and scalar potentials respectively.
 
@@ -67,23 +67,23 @@ Without electric sources, a curl representation of the electric field can be ass
 }
 
 Substitution into the Maxwell-Faraday law gives
-\begin{dmath}\label{eqn:potentialMethods:160}
+\begin{equation}\label{eqn:potentialMethods:160}
 \spacegrad \cross \lr{ \bcH + \PD{t}{\bcA^\m} } = 0.
-\end{dmath}
+\end{equation}
 
 This is satisfied with any gradient, say, \( -\spacegrad \phi_m \), providing a potential representation for the magnetic field
 
-%\begin{dmath}\label{eqn:potentialMethods:180}
+%\begin{equation}\label{eqn:potentialMethods:180}
 \boxedEquation{eqn:potentialMethods:180}{
 \bcH = -\spacegrad \phi_m - \PD{t}{\bcA^\m}.
 }
-%\end{dmath}
+%\end{equation}
 
 The remaining Maxwell equations provide the required constraints on the potentials
 
 \begin{subequations}
 \label{eqn:potentialMethods:200}
-\begin{dmath}\label{eqn:potentialMethods:220}
+\begin{equation}\label{eqn:potentialMethods:220}
 -\spacegrad^2 \bcA^\m + \spacegrad \lr{ \spacegrad \cdot \bcA^\m } = -\epsilon
 \lr{
    -\bcM - \mu \PD{t}{}
@@ -91,28 +91,28 @@ The remaining Maxwell equations provide the required constraints on the potentia
       -\spacegrad \phi_m - \PD{t}{\bcA^\m}
    }
 }
-\end{dmath}
-\begin{dmath}\label{eqn:potentialMethods:240}
+\end{equation}
+\begin{equation}\label{eqn:potentialMethods:240}
 \spacegrad \cdot
 \lr{
 -\spacegrad \phi_m - \PD{t}{\bcA^\m}
 }
 = \inv{\mu} q_m,
-\end{dmath}
+\end{equation}
 \end{subequations}
 
 or
-%\begin{dmath}\label{eqn:potentialMethods:260}
+%\begin{equation}\label{eqn:potentialMethods:260}
 \boxedEquation{eqn:potentialMethods:260}{
 \begin{aligned}
 \spacegrad^2 \bcA^\m - \inv{v^2} \PDSq{t}{\bcA^\m} - \spacegrad \lr{ \inv{v^2} \PD{t}{\phi_m} + \spacegrad \cdot \bcA^\m } &= -\epsilon \bcM \\
 \spacegrad^2 \phi_m + \PD{t}{}\lr{ \spacegrad \cdot \bcA^\m } &= -\inv{\mu} q_m.
 \end{aligned}
 }
-%\end{dmath}
+%\end{equation}
 
 The general solution to Maxwell's equations is therefore
-\begin{dmath}\label{eqn:potentialMethods:280}
+\begin{equation}\label{eqn:potentialMethods:280}
 \begin{aligned}
 \bcE &=
 -\spacegrad \phi -\PD{t}{ \bcA^\e }
@@ -121,7 +121,7 @@ The general solution to Maxwell's equations is therefore
 \inv{\mu} \spacegrad \cross \bcA^\e
 -\spacegrad \phi_m - \PD{t}{\bcA^\m},
 \end{aligned}
-\end{dmath}
+\end{equation}
 
 subject to the constraints \cref{eqn:potentialMethods:120} and \cref{eqn:potentialMethods:260}.
 
@@ -131,7 +131,7 @@ Knowing that there is a simple underlying structure to the potential representat
 
 Specifically, what is the multivector representation \cref{eqn:potentialMethods:1020} of the electromagnetic field in terms of all the individual potential variables, and can an underlying structure for that field representation be found?  The composite field is
 
-\begin{dmath}\label{eqn:potentialMethods:280b}
+\begin{equation}\label{eqn:potentialMethods:280b}
 \bcF
 =
 -\spacegrad \phi -\PD{t}{ \bcA^\e }
@@ -141,11 +141,11 @@ Specifically, what is the multivector representation \cref{eqn:potentialMethods:
 \inv{\mu} \spacegrad \cross \bcA^\e
 -\spacegrad \phi_m - \PD{t}{\bcA^\m}
 }.
-\end{dmath}
+\end{equation}
 
 Can this be factored into into multivector operator and multivector potentials?  Expanding the cross products provides some direction
 
-\begin{dmath}\label{eqn:potentialMethods:1040}
+\begin{equation}\label{eqn:potentialMethods:1040}
 \begin{aligned}
 \bcF
 &=
@@ -155,12 +155,12 @@ Can this be factored into into multivector operator and multivector potentials? 
 &\quad + \frac{\eta}{2 \mu} \lr{ \rspacegrad \bcA^\e - \bcA^\e \lspacegrad }
 + \frac{1}{2 \epsilon} \lr{ \rspacegrad I \bcA^\m - I \bcA^\m \lspacegrad }.
 \end{aligned}
-\end{dmath}
+\end{equation}
 
 Observe that the
 gradient and the time partials can be grouped together
 
-\begin{dmath}\label{eqn:potentialMethods:1060}
+\begin{equation}\label{eqn:potentialMethods:1060}
 \begin{aligned}
 \bcF
 &=
@@ -191,11 +191,11 @@ gradient and the time partials can be grouped together
 %}
 ,
 \end{aligned}
-\end{dmath}
+\end{equation}
 
 or
 
-%\begin{dmath}\label{eqn:potentialMethods:1080}
+%\begin{equation}\label{eqn:potentialMethods:1080}
 \boxedEquation{eqn:potentialMethods:1080}{
 \begin{aligned}
 \bcF
@@ -220,7 +220,7 @@ or
 .
 \end{aligned}
 }
-%\end{dmath}
+%\end{equation}
 
 There's a conjugate structure to the potential on each side of the curl operation where we see a sign change for the scalar and pseudoscalar elements only.  The reason for this becomes more clear in the STA formalism.
 
